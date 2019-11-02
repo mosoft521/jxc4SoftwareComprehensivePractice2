@@ -77,6 +77,7 @@
 <!--  新增中保存和取消按钮 end  -->
 </body>
 
+
 <script type="text/javascript">
     <!-- 新增用户窗口 -->
     function newUser() {
@@ -84,6 +85,7 @@
         $("#fm").form("clear");
         url = "/datagrid/saveOrUpdate";
     }
+
     <!-- 编辑用户窗口  -->
     function editUser(){
         var row = $("#dg").datagrid("getSelected");
@@ -110,11 +112,34 @@
                         msg: result.errorMsg
                     });
                 } else {
-                    $('#dlg').dialog('close');    // close the dialog
-                    $('#dg').datagrid('reload');   // reload the user data
+                    $('#dlg').dialog('close');        // close the dialog
+                    $('#dg').datagrid('reload');    // reload the user data
                 }
             },
         });
     }
 
+    <!-- 删除用户  -->
+    function destroyUser() {
+        var row = $("#dg").datagrid("getSelected");
+        if(row) {
+            $.messager.confirm("Confirm","Are you sure you want to destroy this user?",function(r) {
+                if(r) {
+                    var url = "/datagrid/delete?id="+row.id;
+                    $.post(url,{id:row.id},function(result) {
+                        if(result) {
+                            $('#dg').datagrid('reload');     //reload the user data
+                        }else {
+                            $.messager.show({                //show error msg
+                                title: "Error",
+                                msg: result.errorMsg
+                            });
+                        }
+                    },'json');
+                }
+            });
+        }
+    }
+
 </script>
+</html>
