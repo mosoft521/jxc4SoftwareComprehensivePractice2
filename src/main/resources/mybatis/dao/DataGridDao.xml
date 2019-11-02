@@ -6,4 +6,18 @@
     <select id="findAll" resultType="Datagrid">
         select id,firstname,lastname,phone,email from users;
     </select>
+
+    <insert id="saveOrUpdate" >
+        <!--    <selectKey keyProperty="id" resultType="int" order="BEFORE">
+                 select count(*) from users where id = #{id}
+             </selectKey>-->
+        <if test="id != null">
+            update users
+            set firstname = #{firstname},lastname = #{lastname},phone = #{phone},email = #{email}
+            where id = #{id}
+        </if>
+        <if test="id==null">
+            insert into users values(#{id},#{firstname},#{lastname},#{phone},#{email})
+        </if>
+    </insert>
 </mapper>
