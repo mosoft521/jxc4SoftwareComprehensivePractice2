@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gmail.mosoft521.cp.jxc.dao.SaleMapper">
+  <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.Sale">
+    <id column="sale_no" jdbcType="VARCHAR" property="saleNo" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="day" jdbcType="TIMESTAMP" property="day" />
+    <result column="price" jdbcType="REAL" property="price" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    sale_no, emp_id, customer_no, product_no, day, price, quantity, remark
+  </sql>
+  <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.SaleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sale
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sale
+    where sale_no = #{saleNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sale
+    where sale_no = #{saleNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.SaleExample">
+    delete from sale
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
+    insert into sale (sale_no, emp_id, customer_no, 
+      product_no, day, price, 
+      quantity, remark)
+    values (#{saleNo,jdbcType=VARCHAR}, #{empId,jdbcType=INTEGER}, #{customerNo,jdbcType=VARCHAR}, 
+      #{productNo,jdbcType=VARCHAR}, #{day,jdbcType=TIMESTAMP}, #{price,jdbcType=REAL}, 
+      #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
+    insert into sale
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="saleNo != null">
+        sale_no,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="customerNo != null">
+        customer_no,
+      </if>
+      <if test="productNo != null">
+        product_no,
+      </if>
+      <if test="day != null">
+        day,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="saleNo != null">
+        #{saleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="customerNo != null">
+        #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null">
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        #{day,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.SaleExample" resultType="java.lang.Long">
+    select count(*) from sale
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sale
+    <set>
+      <if test="record.saleNo != null">
+        sale_no = #{record.saleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerNo != null">
+        customer_no = #{record.customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.productNo != null">
+        product_no = #{record.productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.day != null">
+        day = #{record.day,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.quantity != null">
+        quantity = #{record.quantity,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sale
+    set sale_no = #{record.saleNo,jdbcType=VARCHAR},
+      emp_id = #{record.empId,jdbcType=INTEGER},
+      customer_no = #{record.customerNo,jdbcType=VARCHAR},
+      product_no = #{record.productNo,jdbcType=VARCHAR},
+      day = #{record.day,jdbcType=TIMESTAMP},
+      price = #{record.price,jdbcType=REAL},
+      quantity = #{record.quantity,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
+    update sale
+    <set>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="customerNo != null">
+        customer_no = #{customerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null">
+        product_no = #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null">
+        day = #{day,jdbcType=TIMESTAMP},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sale_no = #{saleNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
+    update sale
+    set emp_id = #{empId,jdbcType=INTEGER},
+      customer_no = #{customerNo,jdbcType=VARCHAR},
+      product_no = #{productNo,jdbcType=VARCHAR},
+      day = #{day,jdbcType=TIMESTAMP},
+      price = #{price,jdbcType=REAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where sale_no = #{saleNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

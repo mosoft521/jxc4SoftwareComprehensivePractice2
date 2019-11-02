@@ -68,13 +68,50 @@
         <!--t_jxc, t_jxc_in_record, t_jxc_sale_record, t_jxc_type, t_in_record, t_publisher, t_sale_record, t_user-->
         <!--        <table schema="" tableName="common_xzqh_tree_path" domainObjectName="CommonXzqhTreePath">-->
         <!--        </table>-->
-        <table schema="" tableName="dept" domainObjectName="Dept">
+
+        <!-- ################################################################################################################### -->
+        <!--<table schema="" tableName="dept" domainObjectName="Dept">
             <generatedKey column="dept_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="emp_type" domainObjectName="EmpType">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>-->
+
+        <table schema="" tableName="customer_type" domainObjectName="CustomerType">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
+        <table schema="" tableName="warehouse" domainObjectName="Warehouse">
+        </table>
+
+        <table schema="" tableName="provider" domainObjectName="Provider">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table schema="" tableName="emp" domainObjectName="Emp">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table schema="" tableName="customer" domainObjectName="Customer">
+        </table>
+
+        <table schema="" tableName="product" domainObjectName="Product">
+        </table>
+
+        <table schema="" tableName="purchase" domainObjectName="Purchase">
+        </table>
+
+        <table schema="" tableName="sale" domainObjectName="Sale">
+        </table>
+
+        <table schema="" tableName="stock" domainObjectName="Stock">
+        </table>
+
+        <table schema="" tableName="stock_in" domainObjectName="StockIn">
+        </table>
+
+        <table schema="" tableName="stock_out" domainObjectName="StockOut">
+        </table>
     </context>
 </generatorConfiguration>
