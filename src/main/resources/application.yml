@@ -4,7 +4,7 @@ mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.gmail.mosoft521.cp.jxc.entity
   mapper-locations:
-    - classpath:mybatis/mapper/**/*.xml
+    - classpath:mybatis/dao/**/*.xml
 
 spring:
   datasource:

@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Basic DataGrid - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/themes/default/easyui.css" th:href="@{../../../static/themes/default/easyui.css}">
+    <link rel="stylesheet" type="text/css" href="../../../static/themes/icon.css" th:href="@{../../../static/themes/icon.css}">
+    <link rel="stylesheet" type="text/css" href="../demo.css" th:href="@{../demo.css}">
+    <script type="text/javascript" src="../../../static/jquery.min.js" th:href="@{../../../static/jquery.min.js}"></script>
+    <script type="text/javascript" src="../../../static/jquery.easyui.min.js" th:href="@{../../../static/jquery.easyui.min.js}"></script>
+</head>
+
+<h2>Basic DataGrid</h2>
+<p>The DataGrid is created from markup, no JavaScript code needed.</p>
+<div style="margin:20px 0;"></div>
+
+<!-- 数据列表 start -->
+<table id="dg" title="My Users" class="easyui-datagrid" style="width:580px;height:250px"
+       url="/datagrid/list" toolbar="#toolbar" singleSelect="true"  method="get">
+    <thead>
+    <tr>
+        <th field="id" width="60" align="center">ID</th>
+        <th field="firstname" width="100" align="center">First Name</th>
+        <th field="lastname" width="100" align="center">Last Name</th>
+        <th field="phone" width="160" align="center">Phone</th>
+        <th field="email" width="160" align="center">Email</th>
+    </tr>
+    </thead>
+</table>
+<!-- 数据列表 end -->
+
+<!-- 工具按钮 start -->
+<div id="toolbar">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+</div>
+<!-- 工具按钮 end -->
+
