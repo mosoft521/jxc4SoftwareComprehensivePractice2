@@ -3,8 +3,11 @@ package com.gmail.mosoft521.cp.jxc.dao;
 import com.gmail.mosoft521.cp.jxc.entity.StockOut;
 import com.gmail.mosoft521.cp.jxc.entity.StockOutExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface StockOutMapper {
     long countByExample(StockOutExample example);
 

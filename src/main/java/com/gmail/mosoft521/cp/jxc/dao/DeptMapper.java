@@ -3,8 +3,11 @@ package com.gmail.mosoft521.cp.jxc.dao;
 import com.gmail.mosoft521.cp.jxc.entity.Dept;
 import com.gmail.mosoft521.cp.jxc.entity.DeptExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface DeptMapper {
     long countByExample(DeptExample example);
 
