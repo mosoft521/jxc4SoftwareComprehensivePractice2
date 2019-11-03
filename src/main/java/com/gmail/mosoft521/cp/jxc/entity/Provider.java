@@ -1,28 +1,28 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class Provider {
-    private Integer id;
+    private Integer providerId;
 
     private String name;
-
-    private String address;
-
-    private String zip;
 
     private String linkman;
 
     private String tel;
 
+    private String address;
+
+    private String zip;
+
     private String fax;
 
     private String remark;
 
-    public Integer getId() {
-        return id;
+    public Integer getProviderId() {
+        return providerId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProviderId(Integer providerId) {
+        this.providerId = providerId;
     }
 
     public String getName() {
@@ -31,22 +31,6 @@ public class Provider {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip == null ? null : zip.trim();
     }
 
     public String getLinkman() {
@@ -63,6 +47,22 @@ public class Provider {
 
     public void setTel(String tel) {
         this.tel = tel == null ? null : tel.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip == null ? null : zip.trim();
     }
 
     public String getFax() {

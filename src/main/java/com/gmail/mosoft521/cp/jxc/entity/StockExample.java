@@ -104,73 +104,63 @@ public class StockExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andProductNoIsNull() {
-            addCriterion("product_no is null");
+        public Criteria andProductIdIsNull() {
+            addCriterion("product_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoIsNotNull() {
-            addCriterion("product_no is not null");
+        public Criteria andProductIdIsNotNull() {
+            addCriterion("product_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoEqualTo(String value) {
-            addCriterion("product_no =", value, "productNo");
+        public Criteria andProductIdEqualTo(Integer value) {
+            addCriterion("product_id =", value, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoNotEqualTo(String value) {
-            addCriterion("product_no <>", value, "productNo");
+        public Criteria andProductIdNotEqualTo(Integer value) {
+            addCriterion("product_id <>", value, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoGreaterThan(String value) {
-            addCriterion("product_no >", value, "productNo");
+        public Criteria andProductIdGreaterThan(Integer value) {
+            addCriterion("product_id >", value, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoGreaterThanOrEqualTo(String value) {
-            addCriterion("product_no >=", value, "productNo");
+        public Criteria andProductIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("product_id >=", value, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoLessThan(String value) {
-            addCriterion("product_no <", value, "productNo");
+        public Criteria andProductIdLessThan(Integer value) {
+            addCriterion("product_id <", value, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoLessThanOrEqualTo(String value) {
-            addCriterion("product_no <=", value, "productNo");
+        public Criteria andProductIdLessThanOrEqualTo(Integer value) {
+            addCriterion("product_id <=", value, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoLike(String value) {
-            addCriterion("product_no like", value, "productNo");
+        public Criteria andProductIdIn(List<Integer> values) {
+            addCriterion("product_id in", values, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoNotLike(String value) {
-            addCriterion("product_no not like", value, "productNo");
+        public Criteria andProductIdNotIn(List<Integer> values) {
+            addCriterion("product_id not in", values, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoIn(List<String> values) {
-            addCriterion("product_no in", values, "productNo");
+        public Criteria andProductIdBetween(Integer value1, Integer value2) {
+            addCriterion("product_id between", value1, value2, "productId");
             return (Criteria) this;
         }
 
-        public Criteria andProductNoNotIn(List<String> values) {
-            addCriterion("product_no not in", values, "productNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNoBetween(String value1, String value2) {
-            addCriterion("product_no between", value1, value2, "productNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNoNotBetween(String value1, String value2) {
-            addCriterion("product_no not between", value1, value2, "productNo");
+        public Criteria andProductIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("product_id not between", value1, value2, "productId");
             return (Criteria) this;
         }
 
@@ -184,52 +174,52 @@ public class StockExample {
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentEqualTo(Float value) {
+        public Criteria andQuantityCurrentEqualTo(Integer value) {
             addCriterion("quantity_current =", value, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentNotEqualTo(Float value) {
+        public Criteria andQuantityCurrentNotEqualTo(Integer value) {
             addCriterion("quantity_current <>", value, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentGreaterThan(Float value) {
+        public Criteria andQuantityCurrentGreaterThan(Integer value) {
             addCriterion("quantity_current >", value, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentGreaterThanOrEqualTo(Float value) {
+        public Criteria andQuantityCurrentGreaterThanOrEqualTo(Integer value) {
             addCriterion("quantity_current >=", value, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentLessThan(Float value) {
+        public Criteria andQuantityCurrentLessThan(Integer value) {
             addCriterion("quantity_current <", value, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentLessThanOrEqualTo(Float value) {
+        public Criteria andQuantityCurrentLessThanOrEqualTo(Integer value) {
             addCriterion("quantity_current <=", value, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentIn(List<Float> values) {
+        public Criteria andQuantityCurrentIn(List<Integer> values) {
             addCriterion("quantity_current in", values, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentNotIn(List<Float> values) {
+        public Criteria andQuantityCurrentNotIn(List<Integer> values) {
             addCriterion("quantity_current not in", values, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentBetween(Float value1, Float value2) {
+        public Criteria andQuantityCurrentBetween(Integer value1, Integer value2) {
             addCriterion("quantity_current between", value1, value2, "quantityCurrent");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityCurrentNotBetween(Float value1, Float value2) {
+        public Criteria andQuantityCurrentNotBetween(Integer value1, Integer value2) {
             addCriterion("quantity_current not between", value1, value2, "quantityCurrent");
             return (Criteria) this;
         }
@@ -244,52 +234,52 @@ public class StockExample {
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinEqualTo(Float value) {
+        public Criteria andQuantityMinEqualTo(Integer value) {
             addCriterion("quantity_min =", value, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinNotEqualTo(Float value) {
+        public Criteria andQuantityMinNotEqualTo(Integer value) {
             addCriterion("quantity_min <>", value, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinGreaterThan(Float value) {
+        public Criteria andQuantityMinGreaterThan(Integer value) {
             addCriterion("quantity_min >", value, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinGreaterThanOrEqualTo(Float value) {
+        public Criteria andQuantityMinGreaterThanOrEqualTo(Integer value) {
             addCriterion("quantity_min >=", value, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinLessThan(Float value) {
+        public Criteria andQuantityMinLessThan(Integer value) {
             addCriterion("quantity_min <", value, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinLessThanOrEqualTo(Float value) {
+        public Criteria andQuantityMinLessThanOrEqualTo(Integer value) {
             addCriterion("quantity_min <=", value, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinIn(List<Float> values) {
+        public Criteria andQuantityMinIn(List<Integer> values) {
             addCriterion("quantity_min in", values, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinNotIn(List<Float> values) {
+        public Criteria andQuantityMinNotIn(List<Integer> values) {
             addCriterion("quantity_min not in", values, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinBetween(Float value1, Float value2) {
+        public Criteria andQuantityMinBetween(Integer value1, Integer value2) {
             addCriterion("quantity_min between", value1, value2, "quantityMin");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMinNotBetween(Float value1, Float value2) {
+        public Criteria andQuantityMinNotBetween(Integer value1, Integer value2) {
             addCriterion("quantity_min not between", value1, value2, "quantityMin");
             return (Criteria) this;
         }
@@ -304,52 +294,52 @@ public class StockExample {
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxEqualTo(Float value) {
+        public Criteria andQuantityMaxEqualTo(Integer value) {
             addCriterion("quantity_max =", value, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxNotEqualTo(Float value) {
+        public Criteria andQuantityMaxNotEqualTo(Integer value) {
             addCriterion("quantity_max <>", value, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxGreaterThan(Float value) {
+        public Criteria andQuantityMaxGreaterThan(Integer value) {
             addCriterion("quantity_max >", value, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxGreaterThanOrEqualTo(Float value) {
+        public Criteria andQuantityMaxGreaterThanOrEqualTo(Integer value) {
             addCriterion("quantity_max >=", value, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxLessThan(Float value) {
+        public Criteria andQuantityMaxLessThan(Integer value) {
             addCriterion("quantity_max <", value, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxLessThanOrEqualTo(Float value) {
+        public Criteria andQuantityMaxLessThanOrEqualTo(Integer value) {
             addCriterion("quantity_max <=", value, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxIn(List<Float> values) {
+        public Criteria andQuantityMaxIn(List<Integer> values) {
             addCriterion("quantity_max in", values, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxNotIn(List<Float> values) {
+        public Criteria andQuantityMaxNotIn(List<Integer> values) {
             addCriterion("quantity_max not in", values, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxBetween(Float value1, Float value2) {
+        public Criteria andQuantityMaxBetween(Integer value1, Integer value2) {
             addCriterion("quantity_max between", value1, value2, "quantityMax");
             return (Criteria) this;
         }
 
-        public Criteria andQuantityMaxNotBetween(Float value1, Float value2) {
+        public Criteria andQuantityMaxNotBetween(Integer value1, Integer value2) {
             addCriterion("quantity_max not between", value1, value2, "quantityMax");
             return (Criteria) this;
         }

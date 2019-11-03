@@ -1,18 +1,18 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class EmpType {
-    private Integer id;
+    private Integer empTypeId;
 
     private String name;
 
     private String remark;
 
-    public Integer getId() {
-        return id;
+    public Integer getEmpTypeId() {
+        return empTypeId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmpTypeId(Integer empTypeId) {
+        this.empTypeId = empTypeId;
     }
 
     public String getName() {

@@ -10,7 +10,7 @@ public interface ProviderMapper {
 
     int deleteByExample(ProviderExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer providerId);
 
     int insert(Provider record);
 
@@ -18,7 +18,7 @@ public interface ProviderMapper {
 
     List<Provider> selectByExample(ProviderExample example);
 
-    Provider selectByPrimaryKey(Integer id);
+    Provider selectByPrimaryKey(Integer providerId);
 
     int updateByExampleSelective(@Param("record") Provider record, @Param("example") ProviderExample example);
 

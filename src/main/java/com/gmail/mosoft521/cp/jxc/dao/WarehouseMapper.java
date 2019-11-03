@@ -10,7 +10,7 @@ public interface WarehouseMapper {
 
     int deleteByExample(WarehouseExample example);
 
-    int deleteByPrimaryKey(String warehouseNo);
+    int deleteByPrimaryKey(Integer warehouseId);
 
     int insert(Warehouse record);
 
@@ -18,7 +18,7 @@ public interface WarehouseMapper {
 
     List<Warehouse> selectByExample(WarehouseExample example);
 
-    Warehouse selectByPrimaryKey(String warehouseNo);
+    Warehouse selectByPrimaryKey(Integer warehouseId);
 
     int updateByExampleSelective(@Param("record") Warehouse record, @Param("example") WarehouseExample example);
 

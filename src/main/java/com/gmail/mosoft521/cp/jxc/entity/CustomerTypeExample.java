@@ -104,63 +104,63 @@ public class CustomerTypeExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andCustomerTypeIdIsNull() {
+            addCriterion("customer_type_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andCustomerTypeIdIsNotNull() {
+            addCriterion("customer_type_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
-            addCriterion("id =", value, "id");
+        public Criteria andCustomerTypeIdEqualTo(Integer value) {
+            addCriterion("customer_type_id =", value, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andCustomerTypeIdNotEqualTo(Integer value) {
+            addCriterion("customer_type_id <>", value, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
-            addCriterion("id >", value, "id");
+        public Criteria andCustomerTypeIdGreaterThan(Integer value) {
+            addCriterion("customer_type_id >", value, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andCustomerTypeIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("customer_type_id >=", value, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
-            addCriterion("id <", value, "id");
+        public Criteria andCustomerTypeIdLessThan(Integer value) {
+            addCriterion("customer_type_id <", value, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andCustomerTypeIdLessThanOrEqualTo(Integer value) {
+            addCriterion("customer_type_id <=", value, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andCustomerTypeIdIn(List<Integer> values) {
+            addCriterion("customer_type_id in", values, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andCustomerTypeIdNotIn(List<Integer> values) {
+            addCriterion("customer_type_id not in", values, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andCustomerTypeIdBetween(Integer value1, Integer value2) {
+            addCriterion("customer_type_id between", value1, value2, "customerTypeId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andCustomerTypeIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("customer_type_id not between", value1, value2, "customerTypeId");
             return (Criteria) this;
         }
 

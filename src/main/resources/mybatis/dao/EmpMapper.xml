@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.EmpMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.Emp">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="emp_id" jdbcType="INTEGER" property="empId" />
     <result column="dept_id" jdbcType="INTEGER" property="deptId" />
     <result column="manage_type_id" jdbcType="INTEGER" property="manageTypeId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sex" jdbcType="INTEGER" property="sex" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
     <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
     <result column="degree" jdbcType="VARCHAR" property="degree" />
   </resultMap>
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, dept_id, manage_type_id, name, password, sex, tel, birthday, degree
+    emp_id, dept_id, manage_type_id, name, tel, user_name, password, sex, birthday, degree
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.EmpExample" resultMap="BaseResultMap">
     select
@@ -91,11 +92,11 @@
     select 
     <include refid="Base_Column_List" />
     from emp
-    where id = #{id,jdbcType=INTEGER}
+    where emp_id = #{empId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from emp
-    where id = #{id,jdbcType=INTEGER}
+    where emp_id = #{empId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.EmpExample">
     delete from emp
@@ -104,18 +105,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.Emp">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into emp (dept_id, manage_type_id, name, 
-      password, sex, tel, 
-      birthday, degree)
+      tel, user_name, password, 
+      sex, birthday, degree
+      )
     values (#{deptId,jdbcType=INTEGER}, #{manageTypeId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=TIMESTAMP}, #{degree,jdbcType=VARCHAR})
+      #{tel,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{birthday,jdbcType=TIMESTAMP}, #{degree,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Emp">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="empId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into emp
@@ -129,14 +132,17 @@
       <if test="name != null">
         name,
       </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
       <if test="password != null">
         password,
       </if>
       <if test="sex != null">
         sex,
-      </if>
-      <if test="tel != null">
-        tel,
       </if>
       <if test="birthday != null">
         birthday,
@@ -155,14 +161,17 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
-        #{sex,jdbcType=INTEGER},
-      </if>
-      <if test="tel != null">
-        #{tel,jdbcType=VARCHAR},
+        #{sex,jdbcType=CHAR},
       </if>
       <if test="birthday != null">
         #{birthday,jdbcType=TIMESTAMP},
@@ -181,8 +190,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update emp
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+      <if test="record.empId != null">
+        emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
       <if test="record.deptId != null">
         dept_id = #{record.deptId,jdbcType=INTEGER},
@@ -193,14 +202,17 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null">
-        sex = #{record.sex,jdbcType=INTEGER},
-      </if>
-      <if test="record.tel != null">
-        tel = #{record.tel,jdbcType=VARCHAR},
+        sex = #{record.sex,jdbcType=CHAR},
       </if>
       <if test="record.birthday != null">
         birthday = #{record.birthday,jdbcType=TIMESTAMP},
@@ -215,13 +227,14 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update emp
-    set id = #{record.id,jdbcType=INTEGER},
+    set emp_id = #{record.empId,jdbcType=INTEGER},
       dept_id = #{record.deptId,jdbcType=INTEGER},
       manage_type_id = #{record.manageTypeId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=INTEGER},
       tel = #{record.tel,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
       birthday = #{record.birthday,jdbcType=TIMESTAMP},
       degree = #{record.degree,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -240,14 +253,17 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="sex != null">
-        sex = #{sex,jdbcType=INTEGER},
-      </if>
-      <if test="tel != null">
-        tel = #{tel,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=CHAR},
       </if>
       <if test="birthday != null">
         birthday = #{birthday,jdbcType=TIMESTAMP},
@@ -256,18 +272,19 @@
         degree = #{degree,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where emp_id = #{empId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.Emp">
     update emp
     set dept_id = #{deptId,jdbcType=INTEGER},
       manage_type_id = #{manageTypeId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=INTEGER},
       tel = #{tel,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
       birthday = #{birthday,jdbcType=TIMESTAMP},
       degree = #{degree,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where emp_id = #{empId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,13 +3,15 @@ package com.gmail.mosoft521.cp.jxc.entity;
 import java.util.Date;
 
 public class Sale {
+    private Integer saleId;
+
     private String saleNo;
 
     private Integer empId;
 
-    private String customerNo;
+    private Integer customerId;
 
-    private String productNo;
+    private Integer productId;
 
     private Date day;
 
@@ -18,6 +20,14 @@ public class Sale {
     private Integer quantity;
 
     private String remark;
+
+    public Integer getSaleId() {
+        return saleId;
+    }
+
+    public void setSaleId(Integer saleId) {
+        this.saleId = saleId;
+    }
 
     public String getSaleNo() {
         return saleNo;
@@ -35,20 +45,20 @@ public class Sale {
         this.empId = empId;
     }
 
-    public String getCustomerNo() {
-        return customerNo;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerNo(String customerNo) {
-        this.customerNo = customerNo == null ? null : customerNo.trim();
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public String getProductNo() {
-        return productNo;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProductNo(String productNo) {
-        this.productNo = productNo == null ? null : productNo.trim();
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public Date getDay() {

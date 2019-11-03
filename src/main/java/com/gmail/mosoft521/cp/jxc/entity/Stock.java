@@ -1,43 +1,43 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class Stock {
-    private String productNo;
+    private Integer productId;
 
-    private Float quantityCurrent;
+    private Integer quantityCurrent;
 
-    private Float quantityMin;
+    private Integer quantityMin;
 
-    private Float quantityMax;
+    private Integer quantityMax;
 
-    public String getProductNo() {
-        return productNo;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProductNo(String productNo) {
-        this.productNo = productNo == null ? null : productNo.trim();
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
-    public Float getQuantityCurrent() {
+    public Integer getQuantityCurrent() {
         return quantityCurrent;
     }
 
-    public void setQuantityCurrent(Float quantityCurrent) {
+    public void setQuantityCurrent(Integer quantityCurrent) {
         this.quantityCurrent = quantityCurrent;
     }
 
-    public Float getQuantityMin() {
+    public Integer getQuantityMin() {
         return quantityMin;
     }
 
-    public void setQuantityMin(Float quantityMin) {
+    public void setQuantityMin(Integer quantityMin) {
         this.quantityMin = quantityMin;
     }
 
-    public Float getQuantityMax() {
+    public Integer getQuantityMax() {
         return quantityMax;
     }
 
-    public void setQuantityMax(Float quantityMax) {
+    public void setQuantityMax(Integer quantityMax) {
         this.quantityMax = quantityMax;
     }
 }

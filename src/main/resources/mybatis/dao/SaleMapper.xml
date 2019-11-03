@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.SaleMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.Sale">
-    <id column="sale_no" jdbcType="VARCHAR" property="saleNo" />
+    <id column="sale_id" jdbcType="INTEGER" property="saleId" />
+    <result column="sale_no" jdbcType="VARCHAR" property="saleNo" />
     <result column="emp_id" jdbcType="INTEGER" property="empId" />
-    <result column="customer_no" jdbcType="VARCHAR" property="customerNo" />
-    <result column="product_no" jdbcType="VARCHAR" property="productNo" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
     <result column="day" jdbcType="TIMESTAMP" property="day" />
     <result column="price" jdbcType="REAL" property="price" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    sale_no, emp_id, customer_no, product_no, day, price, quantity, remark
+    sale_id, sale_no, emp_id, customer_id, product_id, day, price, quantity, remark
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.SaleExample" resultMap="BaseResultMap">
     select
@@ -86,15 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from sale
-    where sale_no = #{saleNo,jdbcType=VARCHAR}
+    where sale_id = #{saleId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sale
-    where sale_no = #{saleNo,jdbcType=VARCHAR}
+    where sale_id = #{saleId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.SaleExample">
     delete from sale
@@ -103,14 +104,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
-    insert into sale (sale_no, emp_id, customer_no, 
-      product_no, day, price, 
+    <selectKey keyProperty="saleId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sale (sale_no, emp_id, customer_id, 
+      product_id, day, price, 
       quantity, remark)
-    values (#{saleNo,jdbcType=VARCHAR}, #{empId,jdbcType=INTEGER}, #{customerNo,jdbcType=VARCHAR}, 
-      #{productNo,jdbcType=VARCHAR}, #{day,jdbcType=TIMESTAMP}, #{price,jdbcType=REAL}, 
+    values (#{saleNo,jdbcType=VARCHAR}, #{empId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{productId,jdbcType=INTEGER}, #{day,jdbcType=TIMESTAMP}, #{price,jdbcType=REAL}, 
       #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
+    <selectKey keyProperty="saleId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into sale
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="saleNo != null">
@@ -119,11 +126,11 @@
       <if test="empId != null">
         emp_id,
       </if>
-      <if test="customerNo != null">
-        customer_no,
+      <if test="customerId != null">
+        customer_id,
       </if>
-      <if test="productNo != null">
-        product_no,
+      <if test="productId != null">
+        product_id,
       </if>
       <if test="day != null">
         day,
@@ -145,11 +152,11 @@
       <if test="empId != null">
         #{empId,jdbcType=INTEGER},
       </if>
-      <if test="customerNo != null">
-        #{customerNo,jdbcType=VARCHAR},
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
       </if>
-      <if test="productNo != null">
-        #{productNo,jdbcType=VARCHAR},
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
       </if>
       <if test="day != null">
         #{day,jdbcType=TIMESTAMP},
@@ -174,17 +181,20 @@
   <update id="updateByExampleSelective" parameterType="map">
     update sale
     <set>
+      <if test="record.saleId != null">
+        sale_id = #{record.saleId,jdbcType=INTEGER},
+      </if>
       <if test="record.saleNo != null">
         sale_no = #{record.saleNo,jdbcType=VARCHAR},
       </if>
       <if test="record.empId != null">
         emp_id = #{record.empId,jdbcType=INTEGER},
       </if>
-      <if test="record.customerNo != null">
-        customer_no = #{record.customerNo,jdbcType=VARCHAR},
+      <if test="record.customerId != null">
+        customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
-      <if test="record.productNo != null">
-        product_no = #{record.productNo,jdbcType=VARCHAR},
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=INTEGER},
       </if>
       <if test="record.day != null">
         day = #{record.day,jdbcType=TIMESTAMP},
@@ -205,10 +215,11 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update sale
-    set sale_no = #{record.saleNo,jdbcType=VARCHAR},
+    set sale_id = #{record.saleId,jdbcType=INTEGER},
+      sale_no = #{record.saleNo,jdbcType=VARCHAR},
       emp_id = #{record.empId,jdbcType=INTEGER},
-      customer_no = #{record.customerNo,jdbcType=VARCHAR},
-      product_no = #{record.productNo,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
+      product_id = #{record.productId,jdbcType=INTEGER},
       day = #{record.day,jdbcType=TIMESTAMP},
       price = #{record.price,jdbcType=REAL},
       quantity = #{record.quantity,jdbcType=INTEGER},
@@ -220,14 +231,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
     update sale
     <set>
+      <if test="saleNo != null">
+        sale_no = #{saleNo,jdbcType=VARCHAR},
+      </if>
       <if test="empId != null">
         emp_id = #{empId,jdbcType=INTEGER},
       </if>
-      <if test="customerNo != null">
-        customer_no = #{customerNo,jdbcType=VARCHAR},
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
       </if>
-      <if test="productNo != null">
-        product_no = #{productNo,jdbcType=VARCHAR},
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
       </if>
       <if test="day != null">
         day = #{day,jdbcType=TIMESTAMP},
@@ -242,17 +256,18 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where sale_no = #{saleNo,jdbcType=VARCHAR}
+    where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.Sale">
     update sale
-    set emp_id = #{empId,jdbcType=INTEGER},
-      customer_no = #{customerNo,jdbcType=VARCHAR},
-      product_no = #{productNo,jdbcType=VARCHAR},
+    set sale_no = #{saleNo,jdbcType=VARCHAR},
+      emp_id = #{empId,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER},
       day = #{day,jdbcType=TIMESTAMP},
       price = #{price,jdbcType=REAL},
       quantity = #{quantity,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
-    where sale_no = #{saleNo,jdbcType=VARCHAR}
+    where sale_id = #{saleId,jdbcType=INTEGER}
   </update>
 </mapper>

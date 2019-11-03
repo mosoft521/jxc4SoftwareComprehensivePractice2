@@ -10,7 +10,7 @@ public interface CustomerTypeMapper {
 
     int deleteByExample(CustomerTypeExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer customerTypeId);
 
     int insert(CustomerType record);
 
@@ -18,7 +18,7 @@ public interface CustomerTypeMapper {
 
     List<CustomerType> selectByExample(CustomerTypeExample example);
 
-    CustomerType selectByPrimaryKey(Integer id);
+    CustomerType selectByPrimaryKey(Integer customerTypeId);
 
     int updateByExampleSelective(@Param("record") CustomerType record, @Param("example") CustomerTypeExample example);
 

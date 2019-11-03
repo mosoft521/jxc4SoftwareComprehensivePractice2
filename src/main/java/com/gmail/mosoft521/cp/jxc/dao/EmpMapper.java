@@ -10,7 +10,7 @@ public interface EmpMapper {
 
     int deleteByExample(EmpExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer empId);
 
     int insert(Emp record);
 
@@ -18,7 +18,7 @@ public interface EmpMapper {
 
     List<Emp> selectByExample(EmpExample example);
 
-    Emp selectByPrimaryKey(Integer id);
+    Emp selectByPrimaryKey(Integer empId);
 
     int updateByExampleSelective(@Param("record") Emp record, @Param("example") EmpExample example);
 

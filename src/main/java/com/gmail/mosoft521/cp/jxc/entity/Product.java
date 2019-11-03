@@ -1,11 +1,11 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class Product {
-    private String productNo;
-
-    private String warehouseNo;
+    private Integer productId;
 
     private String productName;
+
+    private Integer warehouseId;
 
     private Float price;
 
@@ -15,20 +15,12 @@ public class Product {
 
     private String remark;
 
-    public String getProductNo() {
-        return productNo;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProductNo(String productNo) {
-        this.productNo = productNo == null ? null : productNo.trim();
-    }
-
-    public String getWarehouseNo() {
-        return warehouseNo;
-    }
-
-    public void setWarehouseNo(String warehouseNo) {
-        this.warehouseNo = warehouseNo == null ? null : warehouseNo.trim();
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -37,6 +29,14 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName == null ? null : productName.trim();
+    }
+
+    public Integer getWarehouseId() {
+        return warehouseId;
+    }
+
+    public void setWarehouseId(Integer warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
     public Float getPrice() {

@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.StockInMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.StockIn">
-    <id column="stock_in_no" jdbcType="VARCHAR" property="stockInNo" />
-    <result column="purchase_no" jdbcType="VARCHAR" property="purchaseNo" />
+    <id column="stock_in_id" jdbcType="INTEGER" property="stockInId" />
+    <result column="stock_in_no" jdbcType="VARCHAR" property="stockInNo" />
+    <result column="purchase_id" jdbcType="INTEGER" property="purchaseId" />
     <result column="day" jdbcType="TIMESTAMP" property="day" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    stock_in_no, purchase_no, day, quantity, remark
+    stock_in_id, stock_in_no, purchase_id, day, quantity, remark
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockInExample" resultMap="BaseResultMap">
     select
@@ -83,15 +84,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from stock_in
-    where stock_in_no = #{stockInNo,jdbcType=VARCHAR}
+    where stock_in_id = #{stockInId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from stock_in
-    where stock_in_no = #{stockInNo,jdbcType=VARCHAR}
+    where stock_in_id = #{stockInId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockInExample">
     delete from stock_in
@@ -100,19 +101,25 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockIn">
-    insert into stock_in (stock_in_no, purchase_no, day, 
+    <selectKey keyProperty="stockInId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into stock_in (stock_in_no, purchase_id, day, 
       quantity, remark)
-    values (#{stockInNo,jdbcType=VARCHAR}, #{purchaseNo,jdbcType=VARCHAR}, #{day,jdbcType=TIMESTAMP}, 
+    values (#{stockInNo,jdbcType=VARCHAR}, #{purchaseId,jdbcType=INTEGER}, #{day,jdbcType=TIMESTAMP}, 
       #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockIn">
+    <selectKey keyProperty="stockInId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into stock_in
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="stockInNo != null">
         stock_in_no,
       </if>
-      <if test="purchaseNo != null">
-        purchase_no,
+      <if test="purchaseId != null">
+        purchase_id,
       </if>
       <if test="day != null">
         day,
@@ -128,8 +135,8 @@
       <if test="stockInNo != null">
         #{stockInNo,jdbcType=VARCHAR},
       </if>
-      <if test="purchaseNo != null">
-        #{purchaseNo,jdbcType=VARCHAR},
+      <if test="purchaseId != null">
+        #{purchaseId,jdbcType=INTEGER},
       </if>
       <if test="day != null">
         #{day,jdbcType=TIMESTAMP},
@@ -151,11 +158,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update stock_in
     <set>
+      <if test="record.stockInId != null">
+        stock_in_id = #{record.stockInId,jdbcType=INTEGER},
+      </if>
       <if test="record.stockInNo != null">
         stock_in_no = #{record.stockInNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.purchaseNo != null">
-        purchase_no = #{record.purchaseNo,jdbcType=VARCHAR},
+      <if test="record.purchaseId != null">
+        purchase_id = #{record.purchaseId,jdbcType=INTEGER},
       </if>
       <if test="record.day != null">
         day = #{record.day,jdbcType=TIMESTAMP},
@@ -173,8 +183,9 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update stock_in
-    set stock_in_no = #{record.stockInNo,jdbcType=VARCHAR},
-      purchase_no = #{record.purchaseNo,jdbcType=VARCHAR},
+    set stock_in_id = #{record.stockInId,jdbcType=INTEGER},
+      stock_in_no = #{record.stockInNo,jdbcType=VARCHAR},
+      purchase_id = #{record.purchaseId,jdbcType=INTEGER},
       day = #{record.day,jdbcType=TIMESTAMP},
       quantity = #{record.quantity,jdbcType=INTEGER},
       remark = #{record.remark,jdbcType=VARCHAR}
@@ -185,8 +196,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockIn">
     update stock_in
     <set>
-      <if test="purchaseNo != null">
-        purchase_no = #{purchaseNo,jdbcType=VARCHAR},
+      <if test="stockInNo != null">
+        stock_in_no = #{stockInNo,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseId != null">
+        purchase_id = #{purchaseId,jdbcType=INTEGER},
       </if>
       <if test="day != null">
         day = #{day,jdbcType=TIMESTAMP},
@@ -198,14 +212,15 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where stock_in_no = #{stockInNo,jdbcType=VARCHAR}
+    where stock_in_id = #{stockInId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockIn">
     update stock_in
-    set purchase_no = #{purchaseNo,jdbcType=VARCHAR},
+    set stock_in_no = #{stockInNo,jdbcType=VARCHAR},
+      purchase_id = #{purchaseId,jdbcType=INTEGER},
       day = #{day,jdbcType=TIMESTAMP},
       quantity = #{quantity,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
-    where stock_in_no = #{stockInNo,jdbcType=VARCHAR}
+    where stock_in_id = #{stockInId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -70,48 +70,55 @@
         <!--        </table>-->
 
         <!-- ################################################################################################################### -->
-        <!--<table schema="" tableName="dept" domainObjectName="Dept">
+        <table schema="" tableName="dept" domainObjectName="Dept">
             <generatedKey column="dept_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="emp_type" domainObjectName="EmpType">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>-->
+            <generatedKey column="emp_type_id" sqlStatement="MySql" identity="true"/>
+        </table>
 
         <table schema="" tableName="customer_type" domainObjectName="CustomerType">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="customer_type_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="warehouse" domainObjectName="Warehouse">
+            <generatedKey column="warehouse_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="provider" domainObjectName="Provider">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="provider_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="emp" domainObjectName="Emp">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="emp_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="customer" domainObjectName="Customer">
+            <generatedKey column="customer_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="product" domainObjectName="Product">
+            <generatedKey column="product_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="purchase" domainObjectName="Purchase">
+            <generatedKey column="purchase_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="sale" domainObjectName="Sale">
+            <generatedKey column="sale_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="stock" domainObjectName="Stock">
         </table>
 
         <table schema="" tableName="stock_in" domainObjectName="StockIn">
+            <generatedKey column="stock_in_id" sqlStatement="MySql" identity="true"/>
         </table>
 
         <table schema="" tableName="stock_out" domainObjectName="StockOut">
+            <generatedKey column="stock_out_id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

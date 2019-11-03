@@ -3,7 +3,7 @@ package com.gmail.mosoft521.cp.jxc.entity;
 import java.util.Date;
 
 public class Emp {
-    private Integer id;
+    private Integer empId;
 
     private Integer deptId;
 
@@ -11,22 +11,24 @@ public class Emp {
 
     private String name;
 
+    private String tel;
+
+    private String userName;
+
     private String password;
 
-    private Integer sex;
-
-    private String tel;
+    private String sex;
 
     private Date birthday;
 
     private String degree;
 
-    public Integer getId() {
-        return id;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
     public Integer getDeptId() {
@@ -53,6 +55,22 @@ public class Emp {
         this.name = name == null ? null : name.trim();
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
+    }
+
     public String getPassword() {
         return password;
     }
@@ -61,20 +79,12 @@ public class Emp {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
     }
 
     public Date getBirthday() {

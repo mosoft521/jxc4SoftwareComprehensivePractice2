@@ -104,73 +104,63 @@ public class WarehouseExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andWarehouseNoIsNull() {
-            addCriterion("warehouse_no is null");
+        public Criteria andWarehouseIdIsNull() {
+            addCriterion("warehouse_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoIsNotNull() {
-            addCriterion("warehouse_no is not null");
+        public Criteria andWarehouseIdIsNotNull() {
+            addCriterion("warehouse_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoEqualTo(String value) {
-            addCriterion("warehouse_no =", value, "warehouseNo");
+        public Criteria andWarehouseIdEqualTo(Integer value) {
+            addCriterion("warehouse_id =", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoNotEqualTo(String value) {
-            addCriterion("warehouse_no <>", value, "warehouseNo");
+        public Criteria andWarehouseIdNotEqualTo(Integer value) {
+            addCriterion("warehouse_id <>", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoGreaterThan(String value) {
-            addCriterion("warehouse_no >", value, "warehouseNo");
+        public Criteria andWarehouseIdGreaterThan(Integer value) {
+            addCriterion("warehouse_id >", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoGreaterThanOrEqualTo(String value) {
-            addCriterion("warehouse_no >=", value, "warehouseNo");
+        public Criteria andWarehouseIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("warehouse_id >=", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoLessThan(String value) {
-            addCriterion("warehouse_no <", value, "warehouseNo");
+        public Criteria andWarehouseIdLessThan(Integer value) {
+            addCriterion("warehouse_id <", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoLessThanOrEqualTo(String value) {
-            addCriterion("warehouse_no <=", value, "warehouseNo");
+        public Criteria andWarehouseIdLessThanOrEqualTo(Integer value) {
+            addCriterion("warehouse_id <=", value, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoLike(String value) {
-            addCriterion("warehouse_no like", value, "warehouseNo");
+        public Criteria andWarehouseIdIn(List<Integer> values) {
+            addCriterion("warehouse_id in", values, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoNotLike(String value) {
-            addCriterion("warehouse_no not like", value, "warehouseNo");
+        public Criteria andWarehouseIdNotIn(List<Integer> values) {
+            addCriterion("warehouse_id not in", values, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoIn(List<String> values) {
-            addCriterion("warehouse_no in", values, "warehouseNo");
+        public Criteria andWarehouseIdBetween(Integer value1, Integer value2) {
+            addCriterion("warehouse_id between", value1, value2, "warehouseId");
             return (Criteria) this;
         }
 
-        public Criteria andWarehouseNoNotIn(List<String> values) {
-            addCriterion("warehouse_no not in", values, "warehouseNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andWarehouseNoBetween(String value1, String value2) {
-            addCriterion("warehouse_no between", value1, value2, "warehouseNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andWarehouseNoNotBetween(String value1, String value2) {
-            addCriterion("warehouse_no not between", value1, value2, "warehouseNo");
+        public Criteria andWarehouseIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("warehouse_id not between", value1, value2, "warehouseId");
             return (Criteria) this;
         }
 
@@ -311,6 +301,76 @@ public class WarehouseExample {
 
         public Criteria andWarehouseAddressNotBetween(String value1, String value2) {
             addCriterion("warehouse_address not between", value1, value2, "warehouseAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelIsNull() {
+            addCriterion("tel is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelIsNotNull() {
+            addCriterion("tel is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelEqualTo(String value) {
+            addCriterion("tel =", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelNotEqualTo(String value) {
+            addCriterion("tel <>", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelGreaterThan(String value) {
+            addCriterion("tel >", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelGreaterThanOrEqualTo(String value) {
+            addCriterion("tel >=", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelLessThan(String value) {
+            addCriterion("tel <", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelLessThanOrEqualTo(String value) {
+            addCriterion("tel <=", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelLike(String value) {
+            addCriterion("tel like", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelNotLike(String value) {
+            addCriterion("tel not like", value, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelIn(List<String> values) {
+            addCriterion("tel in", values, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelNotIn(List<String> values) {
+            addCriterion("tel not in", values, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelBetween(String value1, String value2) {
+            addCriterion("tel between", value1, value2, "tel");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelNotBetween(String value1, String value2) {
+            addCriterion("tel not between", value1, value2, "tel");
             return (Criteria) this;
         }
 

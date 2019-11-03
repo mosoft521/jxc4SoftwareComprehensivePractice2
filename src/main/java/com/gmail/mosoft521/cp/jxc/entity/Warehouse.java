@@ -1,20 +1,22 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class Warehouse {
-    private String warehouseNo;
+    private Integer warehouseId;
 
     private String warehouseName;
 
     private String warehouseAddress;
 
+    private String tel;
+
     private Integer warehouseSize;
 
-    public String getWarehouseNo() {
-        return warehouseNo;
+    public Integer getWarehouseId() {
+        return warehouseId;
     }
 
-    public void setWarehouseNo(String warehouseNo) {
-        this.warehouseNo = warehouseNo == null ? null : warehouseNo.trim();
+    public void setWarehouseId(Integer warehouseId) {
+        this.warehouseId = warehouseId;
     }
 
     public String getWarehouseName() {
@@ -31,6 +33,14 @@ public class Warehouse {
 
     public void setWarehouseAddress(String warehouseAddress) {
         this.warehouseAddress = warehouseAddress == null ? null : warehouseAddress.trim();
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
     }
 
     public Integer getWarehouseSize() {

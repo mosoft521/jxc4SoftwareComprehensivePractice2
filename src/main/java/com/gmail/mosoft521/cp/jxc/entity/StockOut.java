@@ -3,15 +3,25 @@ package com.gmail.mosoft521.cp.jxc.entity;
 import java.util.Date;
 
 public class StockOut {
+    private Integer stockInId;
+
     private String stockOutNo;
 
-    private String saleNo;
+    private Integer saleId;
 
     private Date day;
 
     private Integer quantity;
 
     private String remark;
+
+    public Integer getStockInId() {
+        return stockInId;
+    }
+
+    public void setStockInId(Integer stockInId) {
+        this.stockInId = stockInId;
+    }
 
     public String getStockOutNo() {
         return stockOutNo;
@@ -21,12 +31,12 @@ public class StockOut {
         this.stockOutNo = stockOutNo == null ? null : stockOutNo.trim();
     }
 
-    public String getSaleNo() {
-        return saleNo;
+    public Integer getSaleId() {
+        return saleId;
     }
 
-    public void setSaleNo(String saleNo) {
-        this.saleNo = saleNo == null ? null : saleNo.trim();
+    public void setSaleId(Integer saleId) {
+        this.saleId = saleId;
     }
 
     public Date getDay() {

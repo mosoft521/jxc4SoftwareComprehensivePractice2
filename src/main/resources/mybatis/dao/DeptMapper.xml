@@ -3,10 +3,9 @@
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.DeptMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.Dept">
     <id column="dept_id" jdbcType="INTEGER" property="deptId" />
-    <result column="manager_id" jdbcType="INTEGER" property="managerId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="place" jdbcType="VARCHAR" property="place" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="fax" jdbcType="VARCHAR" property="fax" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
@@ -69,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    dept_id, manager_id, name, place, phone, fax, remark
+    dept_id, name, place, tel, fax, remark
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.DeptExample" resultMap="BaseResultMap">
     select
@@ -105,10 +104,10 @@
     <selectKey keyProperty="deptId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into dept (manager_id, name, place, 
-      phone, fax, remark)
-    values (#{managerId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+    insert into dept (name, place, tel, 
+      fax, remark)
+    values (#{name,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Dept">
     <selectKey keyProperty="deptId" order="AFTER" resultType="java.lang.Integer">
@@ -116,17 +115,14 @@
     </selectKey>
     insert into dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="managerId != null">
-        manager_id,
-      </if>
       <if test="name != null">
         name,
       </if>
       <if test="place != null">
         place,
       </if>
-      <if test="phone != null">
-        phone,
+      <if test="tel != null">
+        tel,
       </if>
       <if test="fax != null">
         fax,
@@ -136,17 +132,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="managerId != null">
-        #{managerId,jdbcType=INTEGER},
-      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="place != null">
         #{place,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        #{phone,jdbcType=VARCHAR},
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
       </if>
       <if test="fax != null">
         #{fax,jdbcType=VARCHAR},
@@ -168,17 +161,14 @@
       <if test="record.deptId != null">
         dept_id = #{record.deptId,jdbcType=INTEGER},
       </if>
-      <if test="record.managerId != null">
-        manager_id = #{record.managerId,jdbcType=INTEGER},
-      </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.place != null">
         place = #{record.place,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null">
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
       </if>
       <if test="record.fax != null">
         fax = #{record.fax,jdbcType=VARCHAR},
@@ -194,10 +184,9 @@
   <update id="updateByExample" parameterType="map">
     update dept
     set dept_id = #{record.deptId,jdbcType=INTEGER},
-      manager_id = #{record.managerId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       place = #{record.place,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
       fax = #{record.fax,jdbcType=VARCHAR},
       remark = #{record.remark,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -207,17 +196,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Dept">
     update dept
     <set>
-      <if test="managerId != null">
-        manager_id = #{managerId,jdbcType=INTEGER},
-      </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="place != null">
         place = #{place,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
-        phone = #{phone,jdbcType=VARCHAR},
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
       </if>
       <if test="fax != null">
         fax = #{fax,jdbcType=VARCHAR},
@@ -230,10 +216,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.Dept">
     update dept
-    set manager_id = #{managerId,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
       place = #{place,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
       fax = #{fax,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where dept_id = #{deptId,jdbcType=INTEGER}

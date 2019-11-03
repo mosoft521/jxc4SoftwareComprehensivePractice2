@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.StockMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.Stock">
-    <id column="product_no" jdbcType="VARCHAR" property="productNo" />
-    <result column="quantity_current" jdbcType="REAL" property="quantityCurrent" />
-    <result column="quantity_min" jdbcType="REAL" property="quantityMin" />
-    <result column="quantity_max" jdbcType="REAL" property="quantityMax" />
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="quantity_current" jdbcType="INTEGER" property="quantityCurrent" />
+    <result column="quantity_min" jdbcType="INTEGER" property="quantityMin" />
+    <result column="quantity_max" jdbcType="INTEGER" property="quantityMax" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    product_no, quantity_current, quantity_min, quantity_max
+    product_id, quantity_current, quantity_min, quantity_max
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockExample" resultMap="BaseResultMap">
     select
@@ -82,15 +82,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from stock
-    where product_no = #{productNo,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from stock
-    where product_no = #{productNo,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockExample">
     delete from stock
@@ -99,16 +99,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.Stock">
-    insert into stock (product_no, quantity_current, quantity_min, 
+    insert into stock (product_id, quantity_current, quantity_min, 
       quantity_max)
-    values (#{productNo,jdbcType=VARCHAR}, #{quantityCurrent,jdbcType=REAL}, #{quantityMin,jdbcType=REAL}, 
-      #{quantityMax,jdbcType=REAL})
+    values (#{productId,jdbcType=INTEGER}, #{quantityCurrent,jdbcType=INTEGER}, #{quantityMin,jdbcType=INTEGER}, 
+      #{quantityMax,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Stock">
     insert into stock
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="productNo != null">
-        product_no,
+      <if test="productId != null">
+        product_id,
       </if>
       <if test="quantityCurrent != null">
         quantity_current,
@@ -121,17 +121,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="productNo != null">
-        #{productNo,jdbcType=VARCHAR},
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
       </if>
       <if test="quantityCurrent != null">
-        #{quantityCurrent,jdbcType=REAL},
+        #{quantityCurrent,jdbcType=INTEGER},
       </if>
       <if test="quantityMin != null">
-        #{quantityMin,jdbcType=REAL},
+        #{quantityMin,jdbcType=INTEGER},
       </if>
       <if test="quantityMax != null">
-        #{quantityMax,jdbcType=REAL},
+        #{quantityMax,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -144,17 +144,17 @@
   <update id="updateByExampleSelective" parameterType="map">
     update stock
     <set>
-      <if test="record.productNo != null">
-        product_no = #{record.productNo,jdbcType=VARCHAR},
+      <if test="record.productId != null">
+        product_id = #{record.productId,jdbcType=INTEGER},
       </if>
       <if test="record.quantityCurrent != null">
-        quantity_current = #{record.quantityCurrent,jdbcType=REAL},
+        quantity_current = #{record.quantityCurrent,jdbcType=INTEGER},
       </if>
       <if test="record.quantityMin != null">
-        quantity_min = #{record.quantityMin,jdbcType=REAL},
+        quantity_min = #{record.quantityMin,jdbcType=INTEGER},
       </if>
       <if test="record.quantityMax != null">
-        quantity_max = #{record.quantityMax,jdbcType=REAL},
+        quantity_max = #{record.quantityMax,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,10 +163,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update stock
-    set product_no = #{record.productNo,jdbcType=VARCHAR},
-      quantity_current = #{record.quantityCurrent,jdbcType=REAL},
-      quantity_min = #{record.quantityMin,jdbcType=REAL},
-      quantity_max = #{record.quantityMax,jdbcType=REAL}
+    set product_id = #{record.productId,jdbcType=INTEGER},
+      quantity_current = #{record.quantityCurrent,jdbcType=INTEGER},
+      quantity_min = #{record.quantityMin,jdbcType=INTEGER},
+      quantity_max = #{record.quantityMax,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,22 +175,22 @@
     update stock
     <set>
       <if test="quantityCurrent != null">
-        quantity_current = #{quantityCurrent,jdbcType=REAL},
+        quantity_current = #{quantityCurrent,jdbcType=INTEGER},
       </if>
       <if test="quantityMin != null">
-        quantity_min = #{quantityMin,jdbcType=REAL},
+        quantity_min = #{quantityMin,jdbcType=INTEGER},
       </if>
       <if test="quantityMax != null">
-        quantity_max = #{quantityMax,jdbcType=REAL},
+        quantity_max = #{quantityMax,jdbcType=INTEGER},
       </if>
     </set>
-    where product_no = #{productNo,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.Stock">
     update stock
-    set quantity_current = #{quantityCurrent,jdbcType=REAL},
-      quantity_min = #{quantityMin,jdbcType=REAL},
-      quantity_max = #{quantityMax,jdbcType=REAL}
-    where product_no = #{productNo,jdbcType=VARCHAR}
+    set quantity_current = #{quantityCurrent,jdbcType=INTEGER},
+      quantity_min = #{quantityMin,jdbcType=INTEGER},
+      quantity_max = #{quantityMax,jdbcType=INTEGER}
+    where product_id = #{productId,jdbcType=INTEGER}
   </update>
 </mapper>

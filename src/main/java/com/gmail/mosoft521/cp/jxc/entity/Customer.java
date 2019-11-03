@@ -1,26 +1,26 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class Customer {
-    private String customerNo;
+    private Integer customerId;
 
     private String name;
 
     private Integer customerTypeId;
 
+    private String tel;
+
     private String sex;
 
     private String address;
 
-    private String tel;
-
     private String remark;
 
-    public String getCustomerNo() {
-        return customerNo;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerNo(String customerNo) {
-        this.customerNo = customerNo == null ? null : customerNo.trim();
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -39,6 +39,14 @@ public class Customer {
         this.customerTypeId = customerTypeId;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
+    }
+
     public String getSex() {
         return sex;
     }
@@ -53,14 +61,6 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
     }
 
     public String getRemark() {

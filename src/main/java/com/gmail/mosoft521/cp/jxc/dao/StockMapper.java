@@ -10,7 +10,7 @@ public interface StockMapper {
 
     int deleteByExample(StockExample example);
 
-    int deleteByPrimaryKey(String productNo);
+    int deleteByPrimaryKey(Integer productId);
 
     int insert(Stock record);
 
@@ -18,7 +18,7 @@ public interface StockMapper {
 
     List<Stock> selectByExample(StockExample example);
 
-    Stock selectByPrimaryKey(String productNo);
+    Stock selectByPrimaryKey(Integer productId);
 
     int updateByExampleSelective(@Param("record") Stock record, @Param("example") StockExample example);
 

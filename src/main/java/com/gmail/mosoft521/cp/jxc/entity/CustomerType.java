@@ -1,7 +1,7 @@
 package com.gmail.mosoft521.cp.jxc.entity;
 
 public class CustomerType {
-    private Integer id;
+    private Integer customerTypeId;
 
     private String name;
 
@@ -9,12 +9,12 @@ public class CustomerType {
 
     private String remark;
 
-    public Integer getId() {
-        return id;
+    public Integer getCustomerTypeId() {
+        return customerTypeId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCustomerTypeId(Integer customerTypeId) {
+        this.customerTypeId = customerTypeId;
     }
 
     public String getName() {

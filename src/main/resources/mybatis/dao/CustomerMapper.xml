@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.CustomerMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.Customer">
-    <id column="customer_no" jdbcType="VARCHAR" property="customerNo" />
+    <id column="customer_id" jdbcType="INTEGER" property="customerId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="customer_type_id" jdbcType="INTEGER" property="customerTypeId" />
-    <result column="sex" jdbcType="VARCHAR" property="sex" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    customer_no, name, customer_type_id, sex, address, tel, remark
+    customer_id, name, customer_type_id, tel, sex, address, remark
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.CustomerExample" resultMap="BaseResultMap">
     select
@@ -85,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from customer
-    where customer_no = #{customerNo,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from customer
-    where customer_no = #{customerNo,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.CustomerExample">
     delete from customer
@@ -102,24 +102,28 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.Customer">
-    insert into customer (customer_no, name, customer_type_id, 
-      sex, address, tel, 
-      remark)
-    values (#{customerNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{customerTypeId,jdbcType=INTEGER}, 
-      #{sex,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR})
+    <selectKey keyProperty="customerId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into customer (name, customer_type_id, tel, 
+      sex, address, remark)
+    values (#{name,jdbcType=VARCHAR}, #{customerTypeId,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.Customer">
+    <selectKey keyProperty="customerId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into customer
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="customerNo != null">
-        customer_no,
-      </if>
       <if test="name != null">
         name,
       </if>
       <if test="customerTypeId != null">
         customer_type_id,
+      </if>
+      <if test="tel != null">
+        tel,
       </if>
       <if test="sex != null">
         sex,
@@ -127,31 +131,25 @@
       <if test="address != null">
         address,
       </if>
-      <if test="tel != null">
-        tel,
-      </if>
       <if test="remark != null">
         remark,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="customerNo != null">
-        #{customerNo,jdbcType=VARCHAR},
-      </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="customerTypeId != null">
         #{customerTypeId,jdbcType=INTEGER},
       </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
       <if test="sex != null">
-        #{sex,jdbcType=VARCHAR},
+        #{sex,jdbcType=CHAR},
       </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null">
-        #{tel,jdbcType=VARCHAR},
       </if>
       <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
@@ -167,8 +165,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update customer
     <set>
-      <if test="record.customerNo != null">
-        customer_no = #{record.customerNo,jdbcType=VARCHAR},
+      <if test="record.customerId != null">
+        customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -176,14 +174,14 @@
       <if test="record.customerTypeId != null">
         customer_type_id = #{record.customerTypeId,jdbcType=INTEGER},
       </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
       <if test="record.sex != null">
-        sex = #{record.sex,jdbcType=VARCHAR},
+        sex = #{record.sex,jdbcType=CHAR},
       </if>
       <if test="record.address != null">
         address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.tel != null">
-        tel = #{record.tel,jdbcType=VARCHAR},
       </if>
       <if test="record.remark != null">
         remark = #{record.remark,jdbcType=VARCHAR},
@@ -195,12 +193,12 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update customer
-    set customer_no = #{record.customerNo,jdbcType=VARCHAR},
+    set customer_id = #{record.customerId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       customer_type_id = #{record.customerTypeId,jdbcType=INTEGER},
-      sex = #{record.sex,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
+      address = #{record.address,jdbcType=VARCHAR},
       remark = #{record.remark,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -215,29 +213,29 @@
       <if test="customerTypeId != null">
         customer_type_id = #{customerTypeId,jdbcType=INTEGER},
       </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
       <if test="sex != null">
-        sex = #{sex,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=CHAR},
       </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null">
-        tel = #{tel,jdbcType=VARCHAR},
       </if>
       <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where customer_no = #{customerNo,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.Customer">
     update customer
     set name = #{name,jdbcType=VARCHAR},
       customer_type_id = #{customerTypeId,jdbcType=INTEGER},
-      sex = #{sex,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
-    where customer_no = #{customerNo,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
   </update>
 </mapper>

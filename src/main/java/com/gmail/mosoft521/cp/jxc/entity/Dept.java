@@ -3,13 +3,11 @@ package com.gmail.mosoft521.cp.jxc.entity;
 public class Dept {
     private Integer deptId;
 
-    private Integer managerId;
-
     private String name;
 
     private String place;
 
-    private String phone;
+    private String tel;
 
     private String fax;
 
@@ -21,14 +19,6 @@ public class Dept {
 
     public void setDeptId(Integer deptId) {
         this.deptId = deptId;
-    }
-
-    public Integer getManagerId() {
-        return managerId;
-    }
-
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
     }
 
     public String getName() {
@@ -47,12 +37,12 @@ public class Dept {
         this.place = place == null ? null : place.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTel() {
+        return tel;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setTel(String tel) {
+        this.tel = tel == null ? null : tel.trim();
     }
 
     public String getFax() {

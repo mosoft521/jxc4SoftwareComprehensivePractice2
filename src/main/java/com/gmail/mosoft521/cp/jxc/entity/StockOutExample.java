@@ -105,6 +105,66 @@ public class StockOutExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andStockInIdIsNull() {
+            addCriterion("stock_in_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdIsNotNull() {
+            addCriterion("stock_in_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdEqualTo(Integer value) {
+            addCriterion("stock_in_id =", value, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdNotEqualTo(Integer value) {
+            addCriterion("stock_in_id <>", value, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdGreaterThan(Integer value) {
+            addCriterion("stock_in_id >", value, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("stock_in_id >=", value, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdLessThan(Integer value) {
+            addCriterion("stock_in_id <", value, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdLessThanOrEqualTo(Integer value) {
+            addCriterion("stock_in_id <=", value, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdIn(List<Integer> values) {
+            addCriterion("stock_in_id in", values, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdNotIn(List<Integer> values) {
+            addCriterion("stock_in_id not in", values, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdBetween(Integer value1, Integer value2) {
+            addCriterion("stock_in_id between", value1, value2, "stockInId");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockInIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("stock_in_id not between", value1, value2, "stockInId");
+            return (Criteria) this;
+        }
+
         public Criteria andStockOutNoIsNull() {
             addCriterion("stock_out_no is null");
             return (Criteria) this;
@@ -175,73 +235,63 @@ public class StockOutExample {
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoIsNull() {
-            addCriterion("sale_no is null");
+        public Criteria andSaleIdIsNull() {
+            addCriterion("sale_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoIsNotNull() {
-            addCriterion("sale_no is not null");
+        public Criteria andSaleIdIsNotNull() {
+            addCriterion("sale_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoEqualTo(String value) {
-            addCriterion("sale_no =", value, "saleNo");
+        public Criteria andSaleIdEqualTo(Integer value) {
+            addCriterion("sale_id =", value, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoNotEqualTo(String value) {
-            addCriterion("sale_no <>", value, "saleNo");
+        public Criteria andSaleIdNotEqualTo(Integer value) {
+            addCriterion("sale_id <>", value, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoGreaterThan(String value) {
-            addCriterion("sale_no >", value, "saleNo");
+        public Criteria andSaleIdGreaterThan(Integer value) {
+            addCriterion("sale_id >", value, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoGreaterThanOrEqualTo(String value) {
-            addCriterion("sale_no >=", value, "saleNo");
+        public Criteria andSaleIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sale_id >=", value, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoLessThan(String value) {
-            addCriterion("sale_no <", value, "saleNo");
+        public Criteria andSaleIdLessThan(Integer value) {
+            addCriterion("sale_id <", value, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoLessThanOrEqualTo(String value) {
-            addCriterion("sale_no <=", value, "saleNo");
+        public Criteria andSaleIdLessThanOrEqualTo(Integer value) {
+            addCriterion("sale_id <=", value, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoLike(String value) {
-            addCriterion("sale_no like", value, "saleNo");
+        public Criteria andSaleIdIn(List<Integer> values) {
+            addCriterion("sale_id in", values, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoNotLike(String value) {
-            addCriterion("sale_no not like", value, "saleNo");
+        public Criteria andSaleIdNotIn(List<Integer> values) {
+            addCriterion("sale_id not in", values, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoIn(List<String> values) {
-            addCriterion("sale_no in", values, "saleNo");
+        public Criteria andSaleIdBetween(Integer value1, Integer value2) {
+            addCriterion("sale_id between", value1, value2, "saleId");
             return (Criteria) this;
         }
 
-        public Criteria andSaleNoNotIn(List<String> values) {
-            addCriterion("sale_no not in", values, "saleNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleNoBetween(String value1, String value2) {
-            addCriterion("sale_no between", value1, value2, "saleNo");
-            return (Criteria) this;
-        }
-
-        public Criteria andSaleNoNotBetween(String value1, String value2) {
-            addCriterion("sale_no not between", value1, value2, "saleNo");
+        public Criteria andSaleIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("sale_id not between", value1, value2, "saleId");
             return (Criteria) this;
         }
 
