@@ -19,7 +19,7 @@ spring:
       max-total: 10
       max-wait-millis: 200
   resources:
-    static-locations: ["classpath:/static/","classpath:/templates/demo/datagrid","classpath:/","classpath:/templates"]
+    static-locations: ["classpath:/static/","classpath:/static/json/","classpath:/templates/demo/datagrid","classpath:/","classpath:/templates"]
 
 pagehelper:
   helper-dialect: mysql

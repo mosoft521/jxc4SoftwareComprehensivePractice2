@@ -36,10 +36,8 @@
         var url = "/emp/login?userName=" + $("#userName").val() + "&password=" + $("#password").val();
         $.post(url, {}, function (result) {
             if (result) {
-                //TODO:跳转到主页面
+                // 跳转到主页面
                 window.location.href="main.html";
-                // rel="external nofollow";
-                // rel="external nofollow";
             } else {
                 $.messager.show({                //show error msg
                     title: "Error",
