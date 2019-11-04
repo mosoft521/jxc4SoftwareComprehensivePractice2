@@ -23,7 +23,7 @@
         <form class="form-signin" role="form" action="/emp/login" method="post">
             <input id="userName" name="userName" type="text" class="form-control" placeholder="用户名" required autofocus/>
             <input id="password" name="password" type="password" class="form-control" placeholder="密码" required/>
-            <button class="btn btn-lg btn-warning btn-block" type="submit">登录</button>
+            <button class="btn btn-lg btn-warning btn-block" type="button" onclick="login()">登录</button>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me"> 记住我
             </label>
@@ -37,6 +37,9 @@
         $.post(url, {}, function (result) {
             if (result) {
                 //TODO:跳转到主页面
+                window.location.href="main.html";
+                // rel="external nofollow";
+                // rel="external nofollow";
             } else {
                 $.messager.show({                //show error msg
                     title: "Error",
