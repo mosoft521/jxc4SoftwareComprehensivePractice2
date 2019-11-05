@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     var navJson = [
         {
@@ -10,15 +10,36 @@ $(function() {
                 },
                 {
                     "text": "员工类别",
-                    "url": "https://localhost:8080/empType/list"
+                    "url": "empType.html"
                 },
                 {
                     "text": "客户类别",
-                    "url": "https://localhost:8080/customerType/list"
+                    "url": "customerType.html"
                 },
                 {
                     "text": "仓库",
-                    "url": "https://localhost:8080/warehouse"
+                    "url": "warehouse.html"
+                }
+            ]
+        },
+        {
+            "text": "核心信息",
+            "children": [
+                {
+                    "text": "供应商",
+                    "url": "provider.html"
+                },
+                {
+                    "text": "员工",
+                    "url": "emp.html"
+                },
+                {
+                    "text": "客户",
+                    "url": "customer.html"
+                },
+                {
+                    "text": "商品",
+                    "url": "product.html"
                 }
             ]
         },
@@ -27,11 +48,11 @@ $(function() {
             "children": [
                 {
                     "text": "采购",
-                    "url": "https://localhost:8080/purchase"
+                    "url": "purchase.html"
                 },
                 {
                     "text": "入库",
-                    "url": "https://localhost:8080/stockIn"
+                    "url": "stockIn.html"
                 }
             ]
         },
@@ -40,35 +61,35 @@ $(function() {
             "children": [
                 {
                     "text": "销售",
-                    "url": "https://localhost:8080/sale"
+                    "url": "sale.html"
                 },
                 {
                     "text": "出库",
-                    "url": "https://localhost:8080/stockOut"
+                    "url": "stockOut.html"
                 }
             ]
         }
     ];
     // 首页tab显示
     $('#tabs').tabs({
-        fit : true,
-        border : false,
+        fit: true,
+        border: false,
     });
 
     // 导航树加载
     $('#nav').tree({
         data: navJson,
-        lines : true,
-        onClick : function(node) {
+        lines: true,
+        onClick: function (node) {
             if (node.url) {
                 if ($('#tabs').tabs('exists', node.text)) {
                     $('#tabs').tabs('select', node.text);
                 } else {
                     $('#tabs').tabs('add', {
-                        title : node.text,
-                        iconCls : node.iconCls,
-                        content : '<iframe scrolling="auto" frameborder="0"  src="'+node.url+'" style="width:100%;height:100%;"></iframe>',
-                        closable : true,
+                        title: node.text,
+                        iconCls: node.iconCls,
+                        content: '<iframe scrolling="auto" frameborder="0"  src="' + node.url + '" style="width:100%;height:100%;"></iframe>',
+                        closable: true,
                     });
                 }
             }
@@ -77,14 +98,14 @@ $(function() {
 
     // 绑定右键菜单
     $('#tabs').tabs({
-        'onContextMenu' : function(e, title, index) {
+        'onContextMenu': function (e, title, index) {
             // 阻止默认
             e.preventDefault();
             // 显示菜单mm
             if (index > 0) {
                 $('#mm').menu('show', {
-                    left : e.pageX,
-                    top : e.pageY
+                    left: e.pageX,
+                    top: e.pageY
                 }).data("tabIndex", index);// 把当前索引放进去
                 $('#tabs').tabs('select', index);// 选中当前tab
             }
@@ -92,14 +113,14 @@ $(function() {
     });
 
     // 关闭当前
-    $('#mm-tabclose').click(function() {
+    $('#mm-tabclose').click(function () {
         $('#tabs').tabs('close', $('#mm').data("tabIndex"));// 关闭当前tab页
     });
 
     // 全部关闭
-    $('#mm-tabcloseall').click(function() {
+    $('#mm-tabcloseall').click(function () {
         // $('#tabs').tabs('tabs') 返回所有panel，本想用这个方法，需要查找相应节点
-        $('.tabs-inner span').each(function(i, n) {
+        $('.tabs-inner span').each(function (i, n) {
             var t = $(n).text();
             if (t !== '首页') {
                 $('#tabs').tabs('close', t);
@@ -108,18 +129,18 @@ $(function() {
     });
 
     // 关闭除当前之外的TAB
-    $('#mm-tabcloseother').click(function() {
+    $('#mm-tabcloseother').click(function () {
         $('#mm-tabcloseright').click();
         $('#mm-tabcloseleft').click();
     });
 
     // 关闭当前右侧的TAB
-    $('#mm-tabcloseright').click(function() {
+    $('#mm-tabcloseright').click(function () {
         var nextall = $('.tabs-selected').nextAll();
         if (nextall.length == 0) {
             return false;
         }
-        nextall.each(function(i, n) {
+        nextall.each(function (i, n) {
             var t = $('a:eq(0) span', $(n)).text();
             if (t !== '首页') {
                 $('#tabs').tabs('close', t);
@@ -127,12 +148,12 @@ $(function() {
         });
     });
     // 关闭当前左侧的TAB
-    $('#mm-tabcloseleft').click(function() {
+    $('#mm-tabcloseleft').click(function () {
         var prevall = $('.tabs-selected').prevAll();
         if (prevall.length == 0) {
             return false;
         }
-        prevall.each(function(i, n) {
+        prevall.each(function (i, n) {
             var t = $('a:eq(0) span', $(n)).text();
             if (t !== '首页') {
                 $('#tabs').tabs('close', t);
