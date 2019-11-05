@@ -1,5 +1,6 @@
 package com.gmail.mosoft521.cp.jxc.controller;
 
+import com.gmail.mosoft521.cp.jxc.entity.Emp;
 import com.gmail.mosoft521.cp.jxc.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/emp")
@@ -27,4 +31,44 @@ public class EmpController {
         return empService.login(userName, password);
     }
 
+    /**
+     * 获取所有员工列表
+     *
+     * @return
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public List<Emp> list() {
+        List<Emp> empList = empService.list();
+        return empList;
+    }
+
+    /**
+     * 保存或修改员工
+     *
+     * @return
+     */
+    @PostMapping("/saveOrUpdate")
+    @ResponseBody
+    public boolean saveOrUpdate(@RequestParam Integer empId, @RequestParam Integer deptId, @RequestParam Integer manageTypeId, @RequestParam String name, @RequestParam String tel,
+                                @RequestParam String userName, @RequestParam String password, @RequestParam String sex, @RequestParam Date birthday, @RequestParam String degree) {
+        Emp emp = new Emp();
+        emp.setEmpId(empId);
+        emp.setDeptId(deptId);
+        emp.setManageTypeId(manageTypeId);
+        emp.setName(name);
+        emp.setTel(tel);
+        emp.setUserName(userName);
+        emp.setPassword(password);
+        emp.setSex(sex);
+        emp.setBirthday(birthday);
+        emp.setDegree(degree);
+        return empService.saveOrUpdate(emp);
+    }
+
+    @PostMapping("/delete")
+    @ResponseBody
+    public boolean delete(@RequestParam Integer empId) {
+        return empService.delete(empId);
+    }
 }
