@@ -6,7 +6,7 @@ $(function() {
             "children": [
                 {
                     "text": "部门",
-                    "url": "https://localhost:8080/dept/list"
+                    "url": "dept.html"
                 },
                 {
                     "text": "员工类别",
