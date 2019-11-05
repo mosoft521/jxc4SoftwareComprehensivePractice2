@@ -50,7 +50,9 @@
 
         <div class="fitem">
             <label>所属部门:</label>
-            <input name="deptId" class="easyui-validatebox" required="true">
+<!--            <input name="deptId" class="easyui-validatebox" required="true">-->
+            <select id="deptId" name="deptId">
+            </select>
         </div>
         <div class="fitem">
             <label>管理类别:</label>
@@ -98,7 +100,7 @@
 
 
 <script type="text/javascript">
-    <!-- 新增员工窗口 -->
+    <!--    新增员工窗口 -->
     function newEmp() {
         $("#dlg").dialog("open").dialog('setTitle', '添加员工');
         $("#fm").form("clear");
@@ -160,5 +162,17 @@
         }
     }
 
+    $(function () {
+
+        //Ajax初始化所属部门select
+        $.get("/dept/list", function (data, status) {
+            if (status) {
+                $.each(data, function (i, v) {
+                    $("#deptId").append('<option value ="' + v.deptId + '">' + v.name + '</option>');
+                })
+
+            }
+        });
+    })
 </script>
 </html>
