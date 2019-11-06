@@ -56,6 +56,12 @@ public class StockOutServiceImpl implements StockOutService {
 
     @Override
     public boolean delete(Integer stockOutId) {
+        //更新库存
+        StockOut stockOut = stockOutMapper.selectByPrimaryKey(stockOutId);
+        Sale sale = saleMapper.selectByPrimaryKey(stockOut.getSaleId());
+        Stock stock = stockMapper.selectByPrimaryKey(sale.getProductId());
+        stock.setQuantityCurrent(stock.getQuantityCurrent() + stockOut.getQuantity());
+        stockMapper.updateByPrimaryKeySelective(stock);
         return stockOutMapper.deleteByPrimaryKey(stockOutId) > 0 ? true : false;
     }
 

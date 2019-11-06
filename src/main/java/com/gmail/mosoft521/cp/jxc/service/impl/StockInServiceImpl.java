@@ -56,6 +56,12 @@ public class StockInServiceImpl implements StockInService {
 
     @Override
     public boolean delete(Integer stockInId) {
+        //更新库存
+        StockIn stockIn = stockInMapper.selectByPrimaryKey(stockInId);
+        Purchase purchase = purchaseMapper.selectByPrimaryKey(stockIn.getPurchaseId());
+        Stock stock = stockMapper.selectByPrimaryKey(purchase.getProductId());
+        stock.setQuantityCurrent(stock.getQuantityCurrent() - stockIn.getQuantity());
+        stockMapper.updateByPrimaryKeySelective(stock);
         return stockInMapper.deleteByPrimaryKey(stockInId) > 0 ? true : false;
     }
 
