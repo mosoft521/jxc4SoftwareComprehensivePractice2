@@ -14,4 +14,6 @@ public interface ProviderService {
 
     @Transactional
     boolean delete(Integer providerId);
+
+    String getNameById(Integer providerId);
 }

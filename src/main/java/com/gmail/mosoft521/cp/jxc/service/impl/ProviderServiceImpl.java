@@ -34,4 +34,9 @@ public class ProviderServiceImpl implements ProviderService {
     public boolean delete(Integer providerId) {
         return providerMapper.deleteByPrimaryKey(providerId) > 0 ? true : false;
     }
+
+    @Override
+    public String getNameById(Integer providerId) {
+        return providerMapper.selectByPrimaryKey(providerId).getName();
+    }
 }

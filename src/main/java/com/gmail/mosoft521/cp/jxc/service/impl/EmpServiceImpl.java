@@ -44,4 +44,9 @@ public class EmpServiceImpl implements EmpService {
     public boolean delete(Integer empId) {
         return empMapper.deleteByPrimaryKey(empId) > 0 ? true : false;
     }
+
+    @Override
+    public String getNameById(Integer empId) {
+        return empMapper.selectByPrimaryKey(empId).getName();
+    }
 }
