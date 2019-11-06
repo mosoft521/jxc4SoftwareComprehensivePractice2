@@ -44,6 +44,15 @@ $(function () {
             ]
         },
         {
+            "text": "库存",
+            "children": [
+                {
+                    "text": "库存",
+                    "url": "stock.html"
+                }
+            ]
+        },
+        {
             "text": "采购入库",
             "children": [
                 {

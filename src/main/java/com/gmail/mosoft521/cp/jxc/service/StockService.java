@@ -1,19 +1,19 @@
 package com.gmail.mosoft521.cp.jxc.service;
 
-import com.gmail.mosoft521.cp.jxc.entity.Product;
+import com.gmail.mosoft521.cp.jxc.entity.Stock;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface ProductService {
+public interface StockService {
 
-    List<Product> list();
+    List<Stock> list();
 
     @Transactional
-    boolean saveOrUpdate(Product product);
+    boolean saveOrUpdate(Stock stock);
 
     @Transactional
     boolean delete(Integer productId);
 
-    String getNameById(Integer productId);
+    Stock getStockById(Integer productId);
 }

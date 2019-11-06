@@ -19,19 +19,19 @@ public class WarehouseController {
     private WarehouseService warehouseService;
 
     /**
-     * 获取所有仓库列表
+     * 获取所有库存列表
      *
      * @return
      */
     @RequestMapping("/list")
     @ResponseBody
     public List<Warehouse> list() {
-        List<Warehouse> deptList = warehouseService.list();
-        return deptList;
+        List<Warehouse> warehouseList = warehouseService.list();
+        return warehouseList;
     }
 
     /**
-     * 保存或修改仓库
+     * 保存或修改库存
      *
      * @return
      */
