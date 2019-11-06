@@ -39,4 +39,9 @@ public class PurchaseServiceImpl implements PurchaseService {
     public String getNoById(Integer purchaseId) {
         return purchaseMapper.selectByPrimaryKey(purchaseId).getPurchaseNo();
     }
+
+    @Override
+    public Purchase getById(Integer purchaseId) {
+        return purchaseMapper.selectByPrimaryKey(purchaseId);
+    }
 }

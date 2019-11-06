@@ -16,4 +16,6 @@ public interface PurchaseService {
     boolean delete(Integer purchaseId);
 
     String getNoById(Integer purchaseId);
+
+    Purchase getById(Integer purchaseId);
 }
