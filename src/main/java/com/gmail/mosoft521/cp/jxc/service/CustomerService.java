@@ -1,16 +1,16 @@
 package com.gmail.mosoft521.cp.jxc.service;
 
-import com.gmail.mosoft521.cp.jxc.entity.Provider;
+import com.gmail.mosoft521.cp.jxc.entity.Customer;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface ProviderService {
+public interface CustomerService {
 
-    List<Provider> list();
+    List<Customer> list();
 
     @Transactional
-    boolean saveOrUpdate(Provider providerType);
+    boolean saveOrUpdate(Customer empType);
 
     @Transactional
     boolean delete(Integer warehouseId);

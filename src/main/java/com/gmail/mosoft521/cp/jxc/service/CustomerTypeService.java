@@ -14,4 +14,6 @@ public interface CustomerTypeService {
 
     @Transactional
     boolean delete(Integer customerTypeId);
+
+    String getNameById(Integer customerTypeId);
 }
