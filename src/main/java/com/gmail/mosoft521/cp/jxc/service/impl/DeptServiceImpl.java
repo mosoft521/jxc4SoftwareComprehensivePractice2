@@ -34,4 +34,9 @@ public class DeptServiceImpl implements DeptService {
     public boolean delete(Integer deptId) {
         return deptMapper.deleteByPrimaryKey(deptId) > 0 ? true : false;
     }
+
+    @Override
+    public String getNameById(Integer deptId) {
+        return deptMapper.selectByPrimaryKey(deptId).getName();
+    }
 }

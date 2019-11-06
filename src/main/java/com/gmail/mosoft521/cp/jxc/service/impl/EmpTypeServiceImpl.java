@@ -34,4 +34,9 @@ public class EmpTypeServiceImpl implements EmpTypeService {
     public boolean delete(Integer empTypeId) {
         return empTypeMapper.deleteByPrimaryKey(empTypeId) > 0 ? true : false;
     }
+
+    @Override
+    public String getNameById(Integer empTypeId) {
+        return empTypeMapper.selectByPrimaryKey(empTypeId).getName();
+    }
 }

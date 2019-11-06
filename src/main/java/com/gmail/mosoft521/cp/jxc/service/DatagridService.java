@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface DatagridService {
 
-    public List<Datagrid> list();
+    List<Datagrid> list();
 
     @Transactional
-    public boolean saveOrUpdate(Datagrid datagrid);
+    boolean saveOrUpdate(Datagrid datagrid);
 
     @Transactional
-    public boolean delete(Integer id);
+    boolean delete(Integer id);
 }

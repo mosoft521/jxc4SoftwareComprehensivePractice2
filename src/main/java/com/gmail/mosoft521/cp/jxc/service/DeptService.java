@@ -7,11 +7,13 @@ import java.util.List;
 
 public interface DeptService {
 
-    public List<Dept> list();
+    List<Dept> list();
 
     @Transactional
-    public boolean saveOrUpdate(Dept dept);
+    boolean saveOrUpdate(Dept dept);
 
     @Transactional
-    public boolean delete(Integer deptId);
+    boolean delete(Integer deptId);
+
+    String getNameById(Integer deptId);
 }

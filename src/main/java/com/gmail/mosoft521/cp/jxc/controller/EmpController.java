@@ -1,7 +1,11 @@
 package com.gmail.mosoft521.cp.jxc.controller;
 
 import com.gmail.mosoft521.cp.jxc.entity.Emp;
+import com.gmail.mosoft521.cp.jxc.service.DeptService;
 import com.gmail.mosoft521.cp.jxc.service.EmpService;
+import com.gmail.mosoft521.cp.jxc.service.EmpTypeService;
+import com.gmail.mosoft521.cp.jxc.vo.EmpVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +29,12 @@ public class EmpController {
 
     @Autowired
     private EmpService empService;
+
+    @Autowired
+    private DeptService deptService;
+
+    @Autowired
+    private EmpTypeService empTypeService;
 
     /**
      * 登录
@@ -45,9 +56,17 @@ public class EmpController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public List<Emp> list() {
+    public List<EmpVO> list() {
         List<Emp> empList = empService.list();
-        return empList;
+        List<EmpVO> empVOList = new ArrayList<>(empList.size());
+        for (Emp emp : empList) {
+            EmpVO empVO = new EmpVO();
+            BeanUtils.copyProperties(emp, empVO);
+            empVO.setDeptName(deptService.getNameById(empVO.getDeptId()));
+            empVO.setManageTypeName(empTypeService.getNameById(empVO.getManageTypeId()));
+            empVOList.add(empVO);
+        }
+        return empVOList;
     }
 
     /**

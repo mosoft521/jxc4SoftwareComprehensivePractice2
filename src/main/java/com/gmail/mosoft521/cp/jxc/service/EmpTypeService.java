@@ -14,4 +14,6 @@ public interface EmpTypeService {
 
     @Transactional
     boolean delete(Integer empTypeId);
+
+    String getNameById(Integer empTypeId);
 }
