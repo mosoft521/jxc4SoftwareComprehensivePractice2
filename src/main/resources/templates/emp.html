@@ -39,8 +39,7 @@
 <!-- 工具按钮 end -->
 
 <!--  新增(form表单) start  -->
-<div id="dlg" class="easyui-dialog" style="width:400px;height:480px;padding:10px 20px"
-     closed="true" buttons="#dlg-buttons">
+<div id="dlg" class="easyui-dialog" style="width:400px;height:480px;padding:10px 20px" closed="true" buttons="#dlg-buttons">
     <div class="ftitle">员工信息</div>
     <form id="fm" method="post">
         <div class="fitem">
@@ -50,17 +49,17 @@
 
         <div class="fitem">
             <label>所属部门:</label>
-            <select id="deptId" name="deptId">
+            <select id="deptId" name="deptId"  required="true">
             </select>
         </div>
         <div class="fitem">
             <label>管理类别:</label>
-            <select id="manageTypeId" name="manageTypeId">
+            <select id="manageTypeId" name="manageTypeId"  required="true">
             </select>
         </div>
         <div class="fitem">
             <label>姓名:</label>
-            <input name="name" class="easyui-validatebox">
+            <input name="name" class="easyui-validatebox"  required="true">
         </div>
         <div class="fitem">
             <label>电话:</label>
@@ -68,11 +67,11 @@
         </div>
         <div class="fitem">
             <label>用户名:</label>
-            <input name="userName" class="easyui-validatebox">
+            <input name="userName" class="easyui-validatebox" required="true">
         </div>
         <div class="fitem">
             <label>密码:</label>
-            <input name="password" class="easyui-validatebox">
+            <input name="password" class="easyui-validatebox" required="true">
         </div>
         <div class="fitem">
             <label>性别:</label>
@@ -82,8 +81,7 @@
             </select>
         </div>
         <div class="fitem">
-            <label>出生年月:</label>
-            <input name="birthday" class="easyui-validatebox">
+            <input name="birthday" class="easyui-datebox" label="出生年月:" labelPosition="top" data-options="formatter:myformatter,parser:myparser" style="width:100%;">
         </div>
         <div class="fitem">
             <label>最高学历:</label>
@@ -162,6 +160,26 @@
                     }, 'json');
                 }
             });
+        }
+    }
+
+    function myformatter(date){
+        var y = date.getFullYear();
+        var m = date.getMonth()+1;
+        var d = date.getDate();
+        return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+    }
+
+    function myparser(s){
+        if (!s) return new Date();
+        var ss = (s.split('-'));
+        var y = parseInt(ss[0],10);
+        var m = parseInt(ss[1],10);
+        var d = parseInt(ss[2],10);
+        if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+            return new Date(y,m-1,d);
+        } else {
+            return new Date();
         }
     }
 
