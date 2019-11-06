@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gmail.mosoft521.cp.jxc.dao.StockOutMapper">
   <resultMap id="BaseResultMap" type="com.gmail.mosoft521.cp.jxc.entity.StockOut">
-    <id column="stock_in_id" jdbcType="INTEGER" property="stockInId" />
+    <id column="stock_out_id" jdbcType="INTEGER" property="stockOutId" />
     <result column="stock_out_no" jdbcType="VARCHAR" property="stockOutNo" />
     <result column="sale_id" jdbcType="INTEGER" property="saleId" />
     <result column="day" jdbcType="TIMESTAMP" property="day" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    stock_in_id, stock_out_no, sale_id, day, quantity, remark
+    stock_out_id, stock_out_no, sale_id, day, quantity, remark
   </sql>
   <select id="selectByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockOutExample" resultMap="BaseResultMap">
     select
@@ -88,11 +88,11 @@
     select 
     <include refid="Base_Column_List" />
     from stock_out
-    where stock_in_id = #{stockInId,jdbcType=INTEGER}
+    where stock_out_id = #{stockOutId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from stock_out
-    where stock_in_id = #{stockInId,jdbcType=INTEGER}
+    where stock_out_id = #{stockOutId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockOutExample">
     delete from stock_out
@@ -101,19 +101,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockOut">
-    insert into stock_out (stock_in_id, stock_out_no, sale_id, 
-      day, quantity, remark
-      )
-    values (#{stockInId,jdbcType=INTEGER}, #{stockOutNo,jdbcType=VARCHAR}, #{saleId,jdbcType=INTEGER}, 
-      #{day,jdbcType=TIMESTAMP}, #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
-      )
+    <selectKey keyProperty="stockOutId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into stock_out (stock_out_no, sale_id, day, 
+      quantity, remark)
+    values (#{stockOutNo,jdbcType=VARCHAR}, #{saleId,jdbcType=INTEGER}, #{day,jdbcType=TIMESTAMP}, 
+      #{quantity,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockOut">
+    <selectKey keyProperty="stockOutId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into stock_out
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="stockInId != null">
-        stock_in_id,
-      </if>
       <if test="stockOutNo != null">
         stock_out_no,
       </if>
@@ -131,9 +132,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="stockInId != null">
-        #{stockInId,jdbcType=INTEGER},
-      </if>
       <if test="stockOutNo != null">
         #{stockOutNo,jdbcType=VARCHAR},
       </if>
@@ -160,8 +158,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update stock_out
     <set>
-      <if test="record.stockInId != null">
-        stock_in_id = #{record.stockInId,jdbcType=INTEGER},
+      <if test="record.stockOutId != null">
+        stock_out_id = #{record.stockOutId,jdbcType=INTEGER},
       </if>
       <if test="record.stockOutNo != null">
         stock_out_no = #{record.stockOutNo,jdbcType=VARCHAR},
@@ -185,7 +183,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update stock_out
-    set stock_in_id = #{record.stockInId,jdbcType=INTEGER},
+    set stock_out_id = #{record.stockOutId,jdbcType=INTEGER},
       stock_out_no = #{record.stockOutNo,jdbcType=VARCHAR},
       sale_id = #{record.saleId,jdbcType=INTEGER},
       day = #{record.day,jdbcType=TIMESTAMP},
@@ -214,7 +212,7 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where stock_in_id = #{stockInId,jdbcType=INTEGER}
+    where stock_out_id = #{stockOutId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.gmail.mosoft521.cp.jxc.entity.StockOut">
     update stock_out
@@ -223,6 +221,6 @@
       day = #{day,jdbcType=TIMESTAMP},
       quantity = #{quantity,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR}
-    where stock_in_id = #{stockInId,jdbcType=INTEGER}
+    where stock_out_id = #{stockOutId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -105,63 +105,63 @@ public class StockOutExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andStockInIdIsNull() {
-            addCriterion("stock_in_id is null");
+        public Criteria andStockOutIdIsNull() {
+            addCriterion("stock_out_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdIsNotNull() {
-            addCriterion("stock_in_id is not null");
+        public Criteria andStockOutIdIsNotNull() {
+            addCriterion("stock_out_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdEqualTo(Integer value) {
-            addCriterion("stock_in_id =", value, "stockInId");
+        public Criteria andStockOutIdEqualTo(Integer value) {
+            addCriterion("stock_out_id =", value, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdNotEqualTo(Integer value) {
-            addCriterion("stock_in_id <>", value, "stockInId");
+        public Criteria andStockOutIdNotEqualTo(Integer value) {
+            addCriterion("stock_out_id <>", value, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdGreaterThan(Integer value) {
-            addCriterion("stock_in_id >", value, "stockInId");
+        public Criteria andStockOutIdGreaterThan(Integer value) {
+            addCriterion("stock_out_id >", value, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("stock_in_id >=", value, "stockInId");
+        public Criteria andStockOutIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("stock_out_id >=", value, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdLessThan(Integer value) {
-            addCriterion("stock_in_id <", value, "stockInId");
+        public Criteria andStockOutIdLessThan(Integer value) {
+            addCriterion("stock_out_id <", value, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdLessThanOrEqualTo(Integer value) {
-            addCriterion("stock_in_id <=", value, "stockInId");
+        public Criteria andStockOutIdLessThanOrEqualTo(Integer value) {
+            addCriterion("stock_out_id <=", value, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdIn(List<Integer> values) {
-            addCriterion("stock_in_id in", values, "stockInId");
+        public Criteria andStockOutIdIn(List<Integer> values) {
+            addCriterion("stock_out_id in", values, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdNotIn(List<Integer> values) {
-            addCriterion("stock_in_id not in", values, "stockInId");
+        public Criteria andStockOutIdNotIn(List<Integer> values) {
+            addCriterion("stock_out_id not in", values, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdBetween(Integer value1, Integer value2) {
-            addCriterion("stock_in_id between", value1, value2, "stockInId");
+        public Criteria andStockOutIdBetween(Integer value1, Integer value2) {
+            addCriterion("stock_out_id between", value1, value2, "stockOutId");
             return (Criteria) this;
         }
 
-        public Criteria andStockInIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("stock_in_id not between", value1, value2, "stockInId");
+        public Criteria andStockOutIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("stock_out_id not between", value1, value2, "stockOutId");
             return (Criteria) this;
         }
 
