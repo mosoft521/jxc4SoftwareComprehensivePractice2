@@ -3,7 +3,7 @@ package com.gmail.mosoft521.cp.jxc.entity;
 import java.util.Date;
 
 public class StockOut {
-    private Integer stockInId;
+    private Integer stockOutId;
 
     private String stockOutNo;
 
@@ -15,12 +15,12 @@ public class StockOut {
 
     private String remark;
 
-    public Integer getStockInId() {
-        return stockInId;
+    public Integer getStockOutId() {
+        return stockOutId;
     }
 
-    public void setStockInId(Integer stockInId) {
-        this.stockInId = stockInId;
+    public void setStockOutId(Integer stockOutId) {
+        this.stockOutId = stockOutId;
     }
 
     public String getStockOutNo() {
