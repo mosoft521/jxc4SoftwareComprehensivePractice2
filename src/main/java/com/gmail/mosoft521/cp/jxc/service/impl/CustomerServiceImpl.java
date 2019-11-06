@@ -34,4 +34,9 @@ public class CustomerServiceImpl implements CustomerService {
     public boolean delete(Integer customerId) {
         return customerMapper.deleteByPrimaryKey(customerId) > 0 ? true : false;
     }
+
+    @Override
+    public String getNameById(Integer customerId) {
+        return customerMapper.selectByPrimaryKey(customerId).getName();
+    }
 }

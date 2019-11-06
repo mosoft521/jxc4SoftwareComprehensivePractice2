@@ -10,8 +10,10 @@ public interface CustomerService {
     List<Customer> list();
 
     @Transactional
-    boolean saveOrUpdate(Customer empType);
+    boolean saveOrUpdate(Customer customer);
 
     @Transactional
-    boolean delete(Integer warehouseId);
+    boolean delete(Integer customerId);
+
+    String getNameById(Integer customerId);
 }
