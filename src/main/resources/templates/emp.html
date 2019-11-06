@@ -50,13 +50,13 @@
 
         <div class="fitem">
             <label>所属部门:</label>
-<!--            <input name="deptId" class="easyui-validatebox" required="true">-->
             <select id="deptId" name="deptId">
             </select>
         </div>
         <div class="fitem">
             <label>管理类别:</label>
-            <input name="manageTypeId" class="easyui-validatebox">
+            <select id="manageTypeId" name="manageTypeId">
+            </select>
         </div>
         <div class="fitem">
             <label>姓名:</label>
@@ -76,7 +76,10 @@
         </div>
         <div class="fitem">
             <label>性别:</label>
-            <input name="sex" class="easyui-validatebox">
+            <select id="sex" name="sex">
+                <option value="M" selected="selected">男</option>
+                <option value="F" >女</option>
+            </select>
         </div>
         <div class="fitem">
             <label>出生年月:</label>
@@ -100,7 +103,7 @@
 
 
 <script type="text/javascript">
-    <!--    新增员工窗口 -->
+    <!--新增员工窗口-->
     function newEmp() {
         $("#dlg").dialog("open").dialog('setTitle', '添加员工');
         $("#fm").form("clear");
@@ -169,6 +172,16 @@
             if (status) {
                 $.each(data, function (i, v) {
                     $("#deptId").append('<option value ="' + v.deptId + '">' + v.name + '</option>');
+                })
+
+            }
+        });
+
+        //Ajax初始化管理类别select
+        $.get("/empType/list", function (data, status) {
+            if (status) {
+                $.each(data, function (i, v) {
+                    $("#manageTypeId").append('<option value ="' + v.empTypeId + '">' + v.name + '</option>');
                 })
 
             }

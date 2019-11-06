@@ -9,12 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/emp")
 public class EmpController {
+    //日期格式
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    //时间格式
+    private SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     @Autowired
     private EmpService empService;
 
@@ -51,7 +58,7 @@ public class EmpController {
     @PostMapping("/saveOrUpdate")
     @ResponseBody
     public boolean saveOrUpdate(@RequestParam Integer empId, @RequestParam Integer deptId, @RequestParam Integer manageTypeId, @RequestParam String name, @RequestParam String tel,
-                                @RequestParam String userName, @RequestParam String password, @RequestParam String sex, @RequestParam Date birthday, @RequestParam String degree) {
+                                @RequestParam String userName, @RequestParam String password, @RequestParam String sex, @RequestParam String birthday, @RequestParam String degree) {
         Emp emp = new Emp();
         emp.setEmpId(empId);
         emp.setDeptId(deptId);
@@ -61,7 +68,13 @@ public class EmpController {
         emp.setUserName(userName);
         emp.setPassword(password);
         emp.setSex(sex);
-        emp.setBirthday(birthday);
+        Date d = null;
+        try {
+            d = dateFormat.parse(birthday);
+        } catch (ParseException e) {
+            return false;
+        }
+        emp.setBirthday(d);
         emp.setDegree(degree);
         return empService.saveOrUpdate(emp);
     }
