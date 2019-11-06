@@ -70,7 +70,7 @@ public class PurchaseController {
     @PostMapping("/saveOrUpdate")
     @ResponseBody
     public boolean saveOrUpdate(@RequestParam Integer purchaseId, @RequestParam String purchaseNo,@RequestParam Integer providerId, @RequestParam Integer empId, @RequestParam Integer productId,
-                                @RequestParam String day, @RequestParam Float price, @RequestParam Integer quantity, @RequestParam String remark) {
+                                @RequestParam String strDay, @RequestParam Float price, @RequestParam Integer quantity, @RequestParam String remark) {
         Purchase purchase = new Purchase();
         purchase.setPurchaseId(purchaseId);
         purchase.setPurchaseNo(purchaseNo);
@@ -79,7 +79,7 @@ public class PurchaseController {
         purchase.setProductId(productId);
         Date d = null;
         try {
-            d = timeFormat.parse(day);
+            d = timeFormat.parse(strDay);
         } catch (ParseException e) {
             return false;
         }

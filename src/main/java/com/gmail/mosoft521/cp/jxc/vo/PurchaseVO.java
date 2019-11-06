@@ -9,7 +9,7 @@ import java.util.Date;
 public class PurchaseVO extends Purchase {
 
     //日期格式
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年M月d日 H时m分s秒");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private String providerName;
 

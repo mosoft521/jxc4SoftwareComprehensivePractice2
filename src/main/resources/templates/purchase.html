@@ -67,7 +67,7 @@
             </select>
         </div>
         <div class="fitem">
-            <input name="day" class="easyui-datetimebox" label="日期:" labelPosition="top" data-options="formatter:myformatter,parser:myparser" style="width:100%;">
+            <input name="strDay" class="easyui-datetimebox" label="日期:" labelPosition="top" data-options="formatter:myformatter,parser:myparser" style="width:100%;">
         </div>
         <div class="fitem">
             <label>单价:</label>
@@ -169,7 +169,7 @@
 
     function myparser(s) {
         if (!s) return new Date();
-        var ss = (s.split('-: '));
+        var ss = s.replace(" ",":").replace(/\:/g,"-").split("-");
         var y = parseInt(ss[0], 10);
         var m = parseInt(ss[1], 10);
         var d = parseInt(ss[2], 10);
