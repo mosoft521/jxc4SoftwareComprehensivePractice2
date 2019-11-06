@@ -10,8 +10,8 @@ public interface ProviderService {
     List<Provider> list();
 
     @Transactional
-    boolean saveOrUpdate(Provider providerType);
+    boolean saveOrUpdate(Provider provider);
 
     @Transactional
-    boolean delete(Integer warehouseId);
+    boolean delete(Integer providerId);
 }

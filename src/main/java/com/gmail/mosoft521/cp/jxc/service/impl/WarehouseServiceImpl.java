@@ -34,4 +34,9 @@ public class WarehouseServiceImpl implements WarehouseService {
     public boolean delete(Integer warehouseId) {
         return warehouseMapper.deleteByPrimaryKey(warehouseId) > 0 ? true : false;
     }
+
+    @Override
+    public String getNameById(Integer warehouseId) {
+        return warehouseMapper.selectByPrimaryKey(warehouseId).getWarehouseName();
+    }
 }

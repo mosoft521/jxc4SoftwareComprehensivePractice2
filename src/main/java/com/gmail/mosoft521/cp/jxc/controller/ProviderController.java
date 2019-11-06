@@ -26,8 +26,8 @@ public class ProviderController {
     @RequestMapping("/list")
     @ResponseBody
     public List<Provider> list() {
-        List<Provider> deptList = providerService.list();
-        return deptList;
+        List<Provider> providerList = providerService.list();
+        return providerList;
     }
 
     /**

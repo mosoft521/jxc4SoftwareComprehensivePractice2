@@ -10,8 +10,10 @@ public interface WarehouseService {
     List<Warehouse> list();
 
     @Transactional
-    boolean saveOrUpdate(Warehouse empType);
+    boolean saveOrUpdate(Warehouse warehouse);
 
     @Transactional
     boolean delete(Integer warehouseId);
+
+    String getNameById(Integer warehouseId);
 }
