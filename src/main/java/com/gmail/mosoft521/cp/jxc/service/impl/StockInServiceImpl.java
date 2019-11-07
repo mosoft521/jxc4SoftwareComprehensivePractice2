@@ -7,21 +7,21 @@ import com.gmail.mosoft521.cp.jxc.entity.Purchase;
 import com.gmail.mosoft521.cp.jxc.entity.Stock;
 import com.gmail.mosoft521.cp.jxc.entity.StockIn;
 import com.gmail.mosoft521.cp.jxc.service.StockInService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class StockInServiceImpl implements StockInService {
 
-    @Autowired
+    @Resource
     private StockInMapper stockInMapper;
 
-    @Autowired
+    @Resource
     private StockMapper stockMapper;
 
-    @Autowired
+    @Resource
     private PurchaseMapper purchaseMapper;
 
     @Override

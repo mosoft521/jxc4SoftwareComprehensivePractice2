@@ -4,14 +4,14 @@ import com.gmail.mosoft521.cp.jxc.dao.EmpMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Emp;
 import com.gmail.mosoft521.cp.jxc.entity.EmpExample;
 import com.gmail.mosoft521.cp.jxc.service.EmpService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class EmpServiceImpl implements EmpService {
-    @Autowired
+    @Resource
     private EmpMapper empMapper;
 
     @Override

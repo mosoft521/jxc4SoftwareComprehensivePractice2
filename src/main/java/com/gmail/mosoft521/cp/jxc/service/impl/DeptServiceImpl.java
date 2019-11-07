@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.DeptMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Dept;
 import com.gmail.mosoft521.cp.jxc.service.DeptService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DeptServiceImpl implements DeptService {
 
-    @Autowired
+    @Resource
     private DeptMapper deptMapper;
 
     @Override

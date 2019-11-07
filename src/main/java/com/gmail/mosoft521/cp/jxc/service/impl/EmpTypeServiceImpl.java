@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.EmpTypeMapper;
 import com.gmail.mosoft521.cp.jxc.entity.EmpType;
 import com.gmail.mosoft521.cp.jxc.service.EmpTypeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class EmpTypeServiceImpl implements EmpTypeService {
 
-    @Autowired
+    @Resource
     private EmpTypeMapper empTypeMapper;
 
     @Override

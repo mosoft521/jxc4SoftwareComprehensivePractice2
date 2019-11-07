@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.WarehouseMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Warehouse;
 import com.gmail.mosoft521.cp.jxc.service.WarehouseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
 
-    @Autowired
+    @Resource
     private WarehouseMapper warehouseMapper;
 
     @Override

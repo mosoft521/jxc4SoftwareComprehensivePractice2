@@ -7,21 +7,21 @@ import com.gmail.mosoft521.cp.jxc.entity.Sale;
 import com.gmail.mosoft521.cp.jxc.entity.Stock;
 import com.gmail.mosoft521.cp.jxc.entity.StockOut;
 import com.gmail.mosoft521.cp.jxc.service.StockOutService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class StockOutServiceImpl implements StockOutService {
 
-    @Autowired
+    @Resource
     private StockOutMapper stockOutMapper;
 
-    @Autowired
+    @Resource
     private StockMapper stockMapper;
 
-    @Autowired
+    @Resource
     private SaleMapper saleMapper;
 
     @Override

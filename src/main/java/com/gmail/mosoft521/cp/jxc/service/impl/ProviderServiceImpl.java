@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.ProviderMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Provider;
 import com.gmail.mosoft521.cp.jxc.service.ProviderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ProviderServiceImpl implements ProviderService {
 
-    @Autowired
+    @Resource
     private ProviderMapper providerMapper;
 
     @Override

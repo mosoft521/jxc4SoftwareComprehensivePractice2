@@ -5,18 +5,18 @@ import com.gmail.mosoft521.cp.jxc.dao.StockMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Product;
 import com.gmail.mosoft521.cp.jxc.entity.Stock;
 import com.gmail.mosoft521.cp.jxc.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
+    @Resource
     private ProductMapper productMapper;
 
-    @Autowired
+    @Resource
     private StockMapper stockMapper;
 
     @Override

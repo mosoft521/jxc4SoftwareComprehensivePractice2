@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.DatagridDao;
 import com.gmail.mosoft521.cp.jxc.entity.Datagrid;
 import com.gmail.mosoft521.cp.jxc.service.DatagridService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DatagridServiceImpl implements DatagridService {
 
-    @Autowired
+    @Resource
     private DatagridDao datagridDao;
 
     @Override

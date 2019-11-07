@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.CustomerMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Customer;
 import com.gmail.mosoft521.cp.jxc.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
+    @Resource
     private CustomerMapper customerMapper;
 
     @Override

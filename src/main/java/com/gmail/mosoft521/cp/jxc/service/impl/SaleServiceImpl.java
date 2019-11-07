@@ -3,15 +3,15 @@ package com.gmail.mosoft521.cp.jxc.service.impl;
 import com.gmail.mosoft521.cp.jxc.dao.SaleMapper;
 import com.gmail.mosoft521.cp.jxc.entity.Sale;
 import com.gmail.mosoft521.cp.jxc.service.SaleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class SaleServiceImpl implements SaleService {
 
-    @Autowired
+    @Resource
     private SaleMapper saleMapper;
 
     @Override
