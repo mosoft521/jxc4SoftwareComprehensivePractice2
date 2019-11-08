@@ -2,6 +2,9 @@ package com.gmail.mosoft521.cp.jxc.controller;
 
 import com.gmail.mosoft521.cp.jxc.entity.Dept;
 import com.gmail.mosoft521.cp.jxc.service.DeptService;
+import com.gmail.mosoft521.cp.jxc.service.EmpService;
+import com.gmail.mosoft521.cp.jxc.vo.DeptVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -18,6 +22,9 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
+    @Autowired
+    private EmpService empService;
+
     /**
      * 获取所有部门列表
      *
@@ -25,9 +32,19 @@ public class DeptController {
      */
     @RequestMapping("/list")
     @ResponseBody
-    public List<Dept> list() {
+    public List<DeptVO> list() {
         List<Dept> deptList = deptService.list();
-        return deptList;
+        List<DeptVO> deptVOList = new ArrayList<>(deptList.size());
+        for (Dept dept : deptList) {
+            DeptVO deptVO = new DeptVO();
+            BeanUtils.copyProperties(dept, deptVO);
+            Integer empId = deptVO.getEmpId();
+            if (null != empId) {
+                deptVO.setEmpName(empService.getNameById(empId));
+            }
+            deptVOList.add(deptVO);
+        }
+        return deptVOList;
     }
 
     /**
