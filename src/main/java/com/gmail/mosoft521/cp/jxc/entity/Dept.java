@@ -3,6 +3,8 @@ package com.gmail.mosoft521.cp.jxc.entity;
 public class Dept {
     private Integer deptId;
 
+    private Integer empId;
+
     private String name;
 
     private String place;
@@ -19,6 +21,14 @@ public class Dept {
 
     public void setDeptId(Integer deptId) {
         this.deptId = deptId;
+    }
+
+    public Integer getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
     }
 
     public String getName() {
